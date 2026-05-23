@@ -70,7 +70,7 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "Ravi Shankar",
-    role: "⭐⭐⭐⭐⭐",
+    rating: 5,
     text: "Affordable and nice salon. Fareed Ahmed has extraordinary haircutting skills.",
     image:
       "https://ui-avatars.com/api/?name=Ravi+Shankar&background=random&color=fff",
