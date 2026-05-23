@@ -9,11 +9,19 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@calcom/embed-react": "^1.5.3",
+    "@hookform/resolvers": "^5.4.0",
     "framer-motion": "^12.34.3",
+    "googleapis": "^172.0.0",
+    "lucide-react": "^1.16.0",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "react-icons": "^5.5.0"
+    "react-hook-form": "^7.76.1",
+    "react-hot-toast": "^2.6.0",
+    "react-icons": "^5.5.0",
+    "resend": "^6.12.3",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

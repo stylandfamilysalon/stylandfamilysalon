@@ -230,7 +230,7 @@ export default function MensServicesPage() {
 
       <section className="border-t border-white/10 bg-black px-4 py-16 text-white sm:px-6 lg:px-8">
         <div className="mx-auto w-full max-w-[1450px]">
-          <div className="sticky top-24 z-10 mb-10 overflow-x-auto rounded-full border border-[#d4af37]/30 bg-black/80 p-2 backdrop-blur">
+          <div className="sticky top-24 z-10 mb-10 overflow-x-auto scrollbar-hide rounded-full border border-[#d4af37]/30 bg-black/80 p-2 backdrop-blur">
             <div className="flex w-max gap-2">
               {mensCategories.map((category) => (
                 <a

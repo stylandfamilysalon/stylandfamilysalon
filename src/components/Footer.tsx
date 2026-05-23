@@ -51,11 +51,13 @@ export default function Footer() {
             <form className="flex w-full flex-col gap-3 rounded-full bg-white p-1 sm:flex-row">
               <input
                 type="email"
+                suppressHydrationWarning
                 placeholder="Enter Your Email"
                 className="h-12 w-full rounded-full bg-transparent px-4 text-base text-[#1f232c] outline-none placeholder:text-[#6b7280]"
               />
               <button
                 type="submit"
+                suppressHydrationWarning
                 className="h-12 shrink-0 rounded-full bg-[#c89f5c] px-8 text-base font-semibold text-[#1f232c] transition hover:brightness-105"
               >
                 Subscribe

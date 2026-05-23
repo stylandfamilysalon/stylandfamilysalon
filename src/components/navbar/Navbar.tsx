@@ -58,7 +58,7 @@ const Navbar = () => {
             onMouseEnter={() => setDesktopServiceOpen(true)}
             onMouseLeave={() => setDesktopServiceOpen(false)}
           >
-            <button className="text-white hover:text-[#d4af37] transition">
+            <button suppressHydrationWarning className="text-white hover:text-[#d4af37] transition">
               Services
             </button>
 
@@ -96,7 +96,7 @@ const Navbar = () => {
         {/* DESKTOP BUTTON */}
         <div className="hidden lg:block">
           <Link
-            href="/contact"
+            href="/book-appointment"
             className="border border-white text-white px-6 py-3 rounded-md font-semibold transition-all duration-300 hover:bg-[#d4af37] hover:text-black hover:border-[#d4af37]"
           >
             Book Appointment
@@ -105,6 +105,7 @@ const Navbar = () => {
 
         {/* MOBILE MENU BUTTON */}
         <button
+          suppressHydrationWarning
           className="lg:hidden text-white text-2xl"
           onClick={() => setIsOpen(true)}
         >
@@ -152,6 +153,7 @@ const Navbar = () => {
               {/* MOBILE SERVICES DROPDOWN */}
               <div>
                 <button
+                  suppressHydrationWarning
                   onClick={() => setServiceOpen(!serviceOpen)}
                   className="text-white text-lg w-full text-left hover:text-[#d4af37] transition"
                 >
@@ -194,7 +196,7 @@ const Navbar = () => {
               </Link>
 
               <Link
-                href="/contact"
+                href="/book-appointment"
                 onClick={closeMenu}
                 className="bg-[#d4af37] text-black px-5 py-2 rounded-full font-semibold text-center mt-4 transition-all duration-300 hover:bg-white"
               >

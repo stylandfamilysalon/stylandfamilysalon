@@ -4,6 +4,9 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import VideoSection from "@/components/VideoSection";
 import Footer from "@/components/Footer";
+import FeaturedServices from "@/components/FeaturedServices";
+import BridalMakeupSection from "@/components/BridalMakeupSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 
 const heroSlides = [
   "https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?auto=format&fit=crop&w=1800&q=80",
@@ -235,6 +238,7 @@ export default function Home() {
               <button
                 key={index}
                 type="button"
+                suppressHydrationWarning
                 onClick={() => setActiveSlide(index)}
                 className={`h-2.5 rounded-full transition-all ${
                   activeSlide === index ? "w-8 bg-[#d4af37]" : "w-2.5 bg-white/50"
@@ -318,6 +322,10 @@ export default function Home() {
         </div>
       </section>
 
+      <FeaturedServices />
+      
+      <BridalMakeupSection />
+
       <section
           ref={servicesRef}
             className="bg-[#ede9e5] px-4 py-20 text-black sm:px-6 md:py-28 lg:px-8 2xl:px-10"
@@ -365,111 +373,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        ref={testimonialRef}
-        className="relative bg-[#ede9e5] px-4 pb-20 pt-8 text-black sm:px-6 md:pb-24 lg:px-8 2xl:px-10"
-      >
-        <div className="mx-auto w-full max-w-[1450px]">
-          <div className="relative lg:min-h-[185vh]">
-            <div
-              className={`mx-auto max-w-3xl rounded-2xl px-4 py-6 text-center transition-all duration-700 ease-out lg:sticky lg:top-14 lg:z-10 lg:py-10 ${
-                isTestimonialVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-              } ${
-                isCollageActive
-                  ? "bg-white/45 shadow-lg backdrop-blur-sm blur-[1px]"
-                  : "bg-transparent blur-0"
-              }`}
-            >
-              <span className="inline-flex items-center rounded-full border border-black/10 bg-white/70 px-3 py-1 text-xs font-semibold tracking-[0.2em] text-[#b7871e]">
-                *****
-              </span>
-
-              <h3 className="mx-auto mt-6 max-w-3xl text-3xl font-extrabold leading-tight sm:text-5xl">
-                Exceptional service, clean cuts, and
-                <br className="hidden sm:block" />
-                a welcoming barbershop atmosphere
-                <br className="hidden sm:block" />
-                always.
-              </h3>
-
-              <div className="mx-auto mt-8 inline-flex items-center gap-3 rounded-full border border-black/10 bg-white/80 px-4 py-2 shadow-sm">
-                <img
-                  src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80"
-                  alt="Guest avatar"
-                  className="h-8 w-8 rounded-full object-cover"
-                />
-                <div className="text-left">
-                  <p className="text-sm font-bold leading-none">Michael</p>
-                  <p className="mt-1 text-xs font-medium text-[#b7871e]">VIP Guest</p>
-                </div>
-                <img
-                  src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=120&q=80"
-                  alt="Guest avatar"
-                  className="h-8 w-8 rounded-full object-cover"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80"
-                  alt="Guest avatar"
-                  className="h-8 w-8 rounded-full object-cover"
-                />
-              </div>
-            </div>
-
-            <div
-              ref={collageRef}
-              className="relative z-20 mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-[-120px] lg:grid-cols-3 lg:gap-6"
-            >
-              <article className="overflow-hidden rounded-xl shadow-lg transition-transform duration-500 hover:-translate-y-1">
-                <img
-                  src="/salon2.jpg"
-                  alt="Barber grooming client"
-                  className="h-[520px] w-full object-cover sm:h-[320px]"
-                />
-              </article>
-
-              <article className="overflow-hidden rounded-xl shadow-lg transition-transform duration-500 hover:-translate-y-1 lg:mt-16">
-                <img
-                  src="/salon2.jpg"
-                  alt="Barber using dryer on client"
-                  className="h-[320px] w-full object-cover sm:h-[360px]"
-                />
-              </article>
-
-              <article className="overflow-hidden rounded-xl shadow-lg transition-transform duration-500 hover:-translate-y-1 lg:mt-10">
-                <img
-                  src="https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?auto=format&fit=crop&w=900&q=80"
-                  alt="Barber styling customer hair"
-                  className="h-[220px] w-full object-cover sm:h-[260px]"
-                />
-              </article>
-
-              <article className="overflow-hidden rounded-xl shadow-lg transition-transform duration-500 hover:-translate-y-1">
-                <img
-                  src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=900&q=80"
-                  alt="Beard trimming in barbershop"
-                  className="h-[280px] w-full object-cover sm:h-[320px]"
-                />
-              </article>
-
-              <article className="overflow-hidden rounded-xl shadow-lg transition-transform duration-500 hover:-translate-y-1 lg:mt-12">
-                <img
-                  src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=900&q=80"
-                  alt="Barber preparing tools"
-                  className="h-[180px] w-full object-cover sm:h-[220px]"
-                />
-              </article>
-
-              <article className="overflow-hidden rounded-xl shadow-lg transition-transform duration-500 hover:-translate-y-1 lg:mt-4">
-                <img
-                  src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=900&q=80"
-                  alt="Hair clipper close-up during haircut"
-                  className="h-[280px] w-full object-cover sm:h-[330px]"
-                />
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TestimonialsSection />
 
       <VideoSection />
 
@@ -485,9 +389,9 @@ export default function Home() {
             <h2 className="cta-title">Book your spot today &amp; step out looking your best.</h2>
 
             <div className="cta-actions">
-              <a href="tel:+12124567899" className="cta-btn cta-btn-primary">
+              <Link href="/book-appointment" className="cta-btn cta-btn-primary">
                 Book Your Slot
-              </a>
+              </Link>
               <a href="mailto:info@saloni.com" className="cta-btn cta-btn-secondary">
                 Info@Saloni.Com
               </a>
