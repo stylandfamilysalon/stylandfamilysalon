@@ -3,8 +3,8 @@ import { Resend } from "resend";
 import { google } from "googleapis";
 import * as z from "zod";
 
-// Initialize Resend
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend conditionally to avoid build errors
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 // Define validation schema for the backend to match the frontend
 const formSchema = z.object({
@@ -34,24 +34,28 @@ export async function POST(req: Request) {
     // 1. Send Email via Resend
     // We send from 'onboarding@resend.dev' by default unless you have verified your domain
     try {
-      await resend.emails.send({
-        from: "Salon Contact Form <onboarding@resend.dev>", 
-        to: process.env.CONTACT_EMAIL_TO || "nithinguggilla94@gmail.com",
-        subject: `New Contact Request: ${subject}`,
-        replyTo: email,
-        html: `
-          <h2>New Contact Request from ${name}</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Phone:</strong> ${phone}</p>
-          <p><strong>Subject:</strong> ${subject}</p>
-          <hr />
-          <h3>Message:</h3>
-          <p>${message.replace(/\\n/g, "<br>")}</p>
-          <hr />
-          <p><small>Sent at: ${timestamp}</small></p>
-        `,
-      });
+      if (resend) {
+        await resend.emails.send({
+          from: "Salon Contact Form <onboarding@resend.dev>", 
+          to: process.env.CONTACT_EMAIL_TO || "nithinguggilla94@gmail.com",
+          subject: `New Contact Request: ${subject}`,
+          replyTo: email,
+          html: `
+            <h2>New Contact Request from ${name}</h2>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Phone:</strong> ${phone}</p>
+            <p><strong>Subject:</strong> ${subject}</p>
+            <hr />
+            <h3>Message:</h3>
+            <p>${message.replace(/\\n/g, "<br>")}</p>
+            <hr />
+            <p><small>Sent at: ${timestamp}</small></p>
+          `,
+        });
+      } else {
+        console.warn("Resend API key is missing. Email was not sent.");
+      }
     } catch (emailError) {
       console.error("Email sending failed:", emailError);
       // We don't fail the whole request if email fails, but we could.
