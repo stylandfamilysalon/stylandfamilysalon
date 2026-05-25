@@ -14,39 +14,174 @@ type ServiceCategory = {
   services: ServiceItem[];
 };
 
-const categoryNames = [
-  "Hair Styling",
-  "Hair Coloring",
-  "Facials",
-  "Manicure",
-  "Pedicure",
-  "Waxing",
-  "Threading",
-  "Makeup",
-  "Bridal Services",
-  "Spa Therapies",
-];
+const womensMenuData = {
+  "Threading": [
+    { "service": "Eyebrow", "price": 70 },
+    { "service": "Upperlip", "price": 50 },
+    { "service": "Forehead", "price": 50 },
+    { "service": "Chin", "price": 50 },
+    { "service": "Full Face", "price": 300 }
+  ],
+  "Haircut's": [
+    { "service": "Basic Haircut & Hairwash", "price": 500 },
+    { "service": "Advance Haircut & Hairwash", "price": 850 },
+    { "service": "Hairwash & Blowdry", "price": "600 onwards" },
+    { "service": "Hairwash & Ironing", "price": 1200 },
+    { "service": "Formal Hairstyling", "price": 1000 },
+    { "service": "Fashion Advance Haircut", "price": "1000 onwards" },
+    { "service": "Ironing & Hairwash", "price": "1200 onwards" },
+    { "service": "Tonging & Hairwash", "price": "1000 onwards" },
+    { "service": "Wash, Condition & Quick Dry", "price": 400 }
+  ],
+  "Hair Treatments": [
+    { "service": "Straightening", "price": "4000 onwards" },
+    { "service": "Smoothening", "price": "5500 onwards" },
+    { "service": "Rebounding", "price": 4500 },
+    { "service": "Keratin", "price": "4000 onwards" },
+    { "service": "Qod", "price": "6000 onwards" },
+    { "service": "Botox", "price": "7000 onwards" },
+    { "service": "Nanoplastic", "price": "6000 onwards" }
+  ],
+  "Hair Coloring": [
+    { "service": "Root Touchup (Majirel)", "price": 1200 },
+    { "service": "Root Touchup (Inoa)", "price": 1500 },
+    { "service": "Global Base Colour", "price": "3000 onwards" },
+    { "service": "Global Fashion Colour", "price": "4000 onwards" },
+    { "service": "3D Fantasy Colour", "price": 3000 },
+    { "service": "Per Steak", "price": 500 },
+    { "service": "One Section", "price": 800 }
+  ],
+  "Hair Care": [
+    { "service": "Basic Hair Spa", "price": 1500 },
+    { "service": "Silk Therapy", "price": 2500 },
+    { "service": "Elite Hair Repair", "price": 1800 },
+    { "service": "Dandruff Treatment (Basic)", "price": 1500 },
+    { "service": "Crown Restore Spa", "price": 2600 },
+    { "service": "Keratin Bliss", "price": 3000 },
+    { "service": "Deep Nourish Spa", "price": 1800 },
+    { "service": "Pure Roots Spa", "price": 2000 },
+    { "service": "Diamond Shine Spa", "price": "3000 onwards" }
+  ],
+  "Cleanup": [
+    { "service": "Fruit Cleanup", "price": 800 },
+    { "service": "Gold Cleanup", "price": 1200 },
+    { "service": "Silver Cleanup", "price": 1000 },
+    { "service": "Insta Cleanup", "price": 850 },
+    { "service": "Deep Cleansing", "price": 1110 },
+    { "service": "Korean Cleanup", "price": 1500 }
+  ],
+  "D-Tan & Skin Treatment": [
+    { "service": "Glow Treatment", "price": 500 },
+    { "service": "Tan Erase Luxe", "price": 700 },
+    { "service": "Golden Glow D-Tan", "price": 1000 },
+    { "service": "Sunkiss Repair", "price": 1200 },
+    { "service": "Aura Bright", "price": 1000 },
+    { "service": "Skin Polish Ritual", "price": 1500 },
+    { "service": "Crystal Bright D-Tan", "price": 999 },
+    { "service": "Full Body Skin Polish", "price": 3000 }
+  ],
+  "Pedicure & Manicure": [
+    { "service": "Classic", "pedicure_price": 600, "manicure_price": 550 },
+    { "service": "Premium", "pedicure_price": 1000, "manicure_price": 850 },
+    { "service": "Spa", "pedicure_price": 850, "manicure_price": 750 },
+    { "service": "Deep Clean", "pedicure_price": 1500, "manicure_price": 1000 },
+    { "service": "Hydra Foot Spa", "pedicure_price": 1800, "manicure_price": 1200 },
+    { "service": "Signature Manicure", "price": 1100 },
+    { "service": "Hand Polish Manicure", "price": 1500 },
+    { "service": "Candle", "pedicure_price": 1800, "manicure_price": 1200 },
+    { "service": "Ice Cream", "pedicure_price": 2000, "manicure_price": 1300 },
+    { "service": "Bubble", "pedicure_price": 1200, "manicure_price": 900 },
+    { "service": "Pedi & Medi Combo (Basic)", "price": 1000 },
+    { "service": "Premium Pedi & Mani Combo", "price": 1600 }
+  ],
+  "Facial": [
+    { "service": "Fruit (Mixed)", "price": 1200 },
+    { "service": "Wine Facial", "price": 1800 },
+    { "service": "Shahnaz (Herbal)", "price": 3500 },
+    { "service": "Gold Facial (Premium)", "price": 3500 },
+    { "service": "Gold Facial (Basic)", "price": 2000 },
+    { "service": "O3+ Bridal (DtanFree)", "price": 3800 },
+    { "service": "Antiaging Facial", "price": 2500 },
+    { "service": "O3+ Shine & Glow", "price": 2500 },
+    { "service": "Anti Tan Facial", "price": 2000 },
+    { "service": "Banana Facial", "price": 2000 },
+    { "service": "Whitening Facial", "price": 1800 },
+    { "service": "Silver Tone", "price": 2000 },
+    { "service": "Charcoal", "price": 1800 },
+    { "service": "Insta Glow", "price": 2000 },
+    { "service": "Acne Healing Facial (Ozone)", "price": 2300 },
+    { "service": "Galvanic Facial (Fruit)", "price": 2500 },
+    { "service": "Natural Fruit Facial", "price": 2000 },
+    { "service": "Hydra Facial (Basic)", "price": 2500 },
+    { "service": "Korean Facial", "price": 3600 },
+    { "service": "Korean & Hydra Facial", "price": 4000 },
+    { "service": "Complexion Brightener", "price": 2200 },
+    { "service": "Xpress Facial", "price": 1700 }
+  ],
+  "Medi Facial's & Treatment": [
+    { "service": "Oxgeneo Treatment", "price": 4000 },
+    { "service": "Korean Whitening", "price": 4500 },
+    { "service": "Lacto Peel Treatment", "price": 2000 },
+    { "service": "Yellow Peel", "price": 6000 },
+    { "service": "Pimple Treatment", "price": 2000 },
+    { "service": "Acne Treatment", "price": 4000 },
+    { "service": "Bridalglow Therapy", "price": 5600 },
+    { "service": "Carbon with Toning (Package)", "price": "25000 onwards" }
+  ],
+  "Waxing": [
+    { "service": "Full Arms", "price": 550 },
+    { "service": "Full Legs", "price": "750 onwards" },
+    { "service": "Half Legs", "price": 500 },
+    { "service": "Under Arms", "price": 200 },
+    { "service": "Upper Lip (Peel)", "price": 100 },
+    { "service": "Full Face (Peel)", "price": 550 },
+    { "service": "Haldi Wax Full Body", "price": 3500 },
+    { "service": "White Chocolate (Rica)", "price": 3000 }
+  ],
+  "Massage Therapy": [
+    { "service": "Amora Spa (60 min)", "price": 1600 },
+    { "service": "Swedish Spa (60 min)", "price": 2000 },
+    { "service": "Head Massage", "price": 500 },
+    { "service": "Head Massage with Hair Wash + Blast Dry", "price": 800 },
+    { "service": "Herbal Natural Head Massage", "price": 700 },
+    { "service": "Head & Shoulder (60 min)", "price": 1500 },
+    { "service": "Body Scrub", "price": 1500 },
+    { "service": "Body Polishing", "price": 7000 },
+    { "service": "Foot Massage (30 min)", "price": 650 },
+    { "service": "Foot and Head Massage", "price": 1100 },
+    { "service": "Body Steam (20 min)", "price": 1000 }
+  ],
+  "Bridal & Makeup": [
+    { "service": "Saree Dropping", "price": "600 onwards" },
+    { "service": "Party Makeup", "price": 3000 },
+    { "service": "Bridal Makeup", "price": 20000 },
+    { "service": "HD Makeup", "price": 25000 },
+    { "service": "Air Brush", "price": 30000 }
+  ]
+};
 
-const serviceTemplates = [
-  { label: "Classic", amount: 45 },
-  { label: "Premium", amount: 60 },
-  { label: "Luxury", amount: 75 },
-  { label: "Express", amount: 35 },
-  { label: "Deluxe", amount: 85 },
-  { label: "Advanced", amount: 95 },
-  { label: "Signature", amount: 110 },
-  { label: "Glow", amount: 70 },
-  { label: "Revive", amount: 80 },
-  { label: "Ultimate", amount: 125 },
-];
+const formatPrice = (price: string | number) => {
+  if (typeof price === "string" && price.includes("onwards")) {
+    return `₹${price.replace(" onwards", "")} onward`;
+  }
+  return `₹${price}`;
+};
 
-const categories: ServiceCategory[] = categoryNames.map((name, categoryIndex) => ({
-  id: name.toLowerCase().replace(/\s+/g, "-"),
-  title: name,
-  services: serviceTemplates.map((template, serviceIndex) => ({
-    name: `${template.label} ${name} ${serviceIndex + 1}`,
-    price: `$${template.amount + categoryIndex * 5}`,
-  })),
+const categories: ServiceCategory[] = Object.entries(womensMenuData).map(([title, services]) => ({
+  id: title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+  title,
+  services: services.map((s: any) => {
+    let priceStr = "";
+    if (s.pedicure_price !== undefined && s.manicure_price !== undefined) {
+      priceStr = `Pedi: ₹${s.pedicure_price} / Mani: ₹${s.manicure_price}`;
+    } else {
+      priceStr = formatPrice(s.price);
+    }
+    return {
+      name: s.service,
+      price: priceStr,
+    };
+  }),
 }));
 
 export default function WomensServicesPage() {

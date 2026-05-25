@@ -14,168 +14,138 @@ type ServiceCategory = {
   services: ServiceItem[];
 };
 
-const mensCategories: ServiceCategory[] = [
-  {
-    id: "haircuts-styling",
-    title: "Haircuts & Styling",
-    services: [
-      { name: "Classic Gent Cut", price: "$25" },
-      { name: "Skin Fade", price: "$35" },
-      { name: "Scissor Cut", price: "$30" },
-      { name: "Textured Crop", price: "$34" },
-      { name: "Pompadour Style", price: "$38" },
-      { name: "Crew Cut", price: "$24" },
-      { name: "Buzz Cut", price: "$20" },
-      { name: "Long Hair Layering", price: "$42" },
-      { name: "Hair Wash & Blow Dry", price: "$18" },
-      { name: "Premium Styling Finish", price: "$16" },
-    ],
-  },
-  {
-    id: "beard-grooming",
-    title: "Beard Grooming",
-    services: [
-      { name: "Beard Trim", price: "$18" },
-      { name: "Beard Shape-Up", price: "$20" },
-      { name: "Royal Beard Sculpt", price: "$28" },
-      { name: "Beard Line Definition", price: "$16" },
-      { name: "Hot Towel Beard Service", price: "$24" },
-      { name: "Beard Conditioning", price: "$15" },
-      { name: "Gray Beard Blending", price: "$22" },
-      { name: "Full Beard Detailing", price: "$27" },
-      { name: "Mustache Grooming", price: "$12" },
-      { name: "Beard Spa Ritual", price: "$32" },
-    ],
-  },
-  {
-    id: "shaving-services",
-    title: "Shaving Services",
-    services: [
-      { name: "Classic Clean Shave", price: "$22" },
-      { name: "Hot Towel Shave", price: "$28" },
-      { name: "Luxury Razor Shave", price: "$35" },
-      { name: "Express Shave", price: "$16" },
-      { name: "Head Shave", price: "$30" },
-      { name: "Shave with Steam", price: "$26" },
-      { name: "Sensitive Skin Shave", price: "$24" },
-      { name: "Contour Shave", price: "$20" },
-      { name: "Aftershave Cooling Therapy", price: "$14" },
-      { name: "Deluxe Shave Package", price: "$40" },
-    ],
-  },
-  {
-    id: "hair-color",
-    title: "Hair Color",
-    services: [
-      { name: "Root Touch-Up", price: "$40" },
-      { name: "Natural Tone Color", price: "$48" },
-      { name: "Gray Coverage", price: "$45" },
-      { name: "Fashion Color", price: "$60" },
-      { name: "Highlights", price: "$65" },
-      { name: "Global Color", price: "$75" },
-      { name: "Beard Color", price: "$30" },
-      { name: "Color + Haircut Combo", price: "$88" },
-      { name: "Ammonia-Free Color", price: "$58" },
-      { name: "Premium Gloss Finish", price: "$20" },
-    ],
-  },
-  {
-    id: "facial-care",
-    title: "Facial Care",
-    services: [
-      { name: "Deep Clean Facial", price: "$45" },
-      { name: "Anti-Acne Facial", price: "$50" },
-      { name: "Hydration Facial", price: "$52" },
-      { name: "Instant Glow Facial", price: "$55" },
-      { name: "Charcoal Detox Facial", price: "$58" },
-      { name: "Anti-Aging Facial", price: "$65" },
-      { name: "Brightening Facial", price: "$60" },
-      { name: "Express Facial", price: "$30" },
-      { name: "D-Tan Facial", price: "$48" },
-      { name: "Luxury Gold Facial", price: "$75" },
-    ],
-  },
-  {
-    id: "skin-treatments",
-    title: "Skin Treatments",
-    services: [
-      { name: "D-Tan Cleanup", price: "$25" },
-      { name: "Blackhead Removal", price: "$20" },
-      { name: "Under-Eye Refresh", price: "$18" },
-      { name: "Face Cleanup", price: "$28" },
-      { name: "Pigmentation Control", price: "$42" },
-      { name: "Hydra Skin Boost", price: "$55" },
-      { name: "Pore Tightening Therapy", price: "$38" },
-      { name: "Oil Control Treatment", price: "$35" },
-      { name: "Calming Skin Repair", price: "$40" },
-      { name: "Advanced Skin Revive", price: "$62" },
-    ],
-  },
-  {
-    id: "manicure-pedicure",
-    title: "Manicure & Pedicure",
-    services: [
-      { name: "Classic Manicure", price: "$22" },
-      { name: "Classic Pedicure", price: "$28" },
-      { name: "Spa Manicure", price: "$30" },
-      { name: "Spa Pedicure", price: "$36" },
-      { name: "Nail Buff & Shape", price: "$12" },
-      { name: "Cuticle Care", price: "$14" },
-      { name: "Foot Relax Therapy", price: "$20" },
-      { name: "Hand Rejuvenation", price: "$18" },
-      { name: "Men's Grooming Combo", price: "$48" },
-      { name: "Luxury Nail Care", price: "$42" },
-    ],
-  },
-  {
-    id: "waxing-threading",
-    title: "Waxing & Threading",
-    services: [
-      { name: "Eyebrow Threading", price: "$8" },
-      { name: "Forehead Threading", price: "$6" },
-      { name: "Ear Wax", price: "$10" },
-      { name: "Nose Wax", price: "$10" },
-      { name: "Cheek Wax", price: "$12" },
-      { name: "Full Face Wax", price: "$30" },
-      { name: "Underarm Wax", price: "$14" },
-      { name: "Half Arm Wax", price: "$18" },
-      { name: "Full Arm Wax", price: "$28" },
-      { name: "Chest + Back Wax", price: "$55" },
-    ],
-  },
-  {
-    id: "head-spa",
-    title: "Head Spa",
-    services: [
-      { name: "Oil Massage", price: "$20" },
-      { name: "Head & Neck Massage", price: "$24" },
-      { name: "Stress Relief Head Spa", price: "$35" },
-      { name: "Anti-Dandruff Therapy", price: "$38" },
-      { name: "Scalp Detox", price: "$42" },
-      { name: "Hair Fall Control Spa", price: "$45" },
-      { name: "Cooling Scalp Session", price: "$30" },
-      { name: "Premium Cream Bath", price: "$40" },
-      { name: "Herbal Nourish Spa", price: "$36" },
-      { name: "Luxury Head Spa Ritual", price: "$55" },
-    ],
-  },
-  {
-    id: "mens-packages",
-    title: "Men's Packages",
-    services: [
-      { name: "Basic Grooming Package", price: "$49" },
-      { name: "Weekly Refresh Package", price: "$79" },
-      { name: "Executive Grooming Package", price: "$99" },
-      { name: "Date Night Package", price: "$89" },
-      { name: "Wedding Groom Package", price: "$149" },
-      { name: "Hair + Beard + Facial", price: "$85" },
-      { name: "Haircut + Color Combo", price: "$95" },
-      { name: "Shave + Facial Combo", price: "$70" },
-      { name: "Head Spa + Pedicure", price: "$78" },
-      { name: "Complete Luxury Package", price: "$189" },
-    ],
-  },
-];
+const mensMenuData = {
+  "Hair Care": [
+    { "service": "Royal Hair Spa", "price": "1000 onwards" },
+    { "service": "Signature Men Spa", "price": "1200 onwards" },
+    { "service": "Luxury Hair Therapy", "price": 2500 },
+    { "service": "Premium Scalp Therapy", "price": 2300 },
+    { "service": "Crown Care Spa", "price": 2000 },
+    { "service": "Dandruff Treatment", "price": 1200 },
+    { "service": "Dandruff Therapy", "price": 2500 },
+    { "service": "Moisturize Spa", "price": 2200 },
+    { "service": "Colour Protect Spa", "price": 2500 }
+  ],
+  "Hair Treatment": [
+    { "service": "Straightening", "price": "2500 onwards" },
+    { "service": "Smoothing", "price": 3000 },
+    { "service": "Rebounding", "price": 3000 },
+    { "service": "Perming", "price": 3500 },
+    { "service": "Botox Fiber", "price": 4000 },
+    { "service": "Keratin", "price": 3000 },
+    { "service": "QOD Treatment", "price": 3500 }
+  ],
+  "Skin - D-Tan": [
+    { "service": "Classic D-Tan", "price": 500 },
+    { "service": "Ice Cool D-Tan", "price": 700 },
+    { "service": "Sun Damage Repair", "price": 1200 },
+    { "service": "Men Skin Revival", "price": 1500 },
+    { "service": "Signature D-Tan Care", "price": 850 },
+    { "service": "Royal D-Tan Therapy", "price": 800 },
+    { "service": "Gold Glow D-Tan", "price": 1600 }
+  ],
+  "Skin Care": [
+    { "service": "Bright & Clear Facial", "price": 1250 },
+    { "service": "Fresh Face Treatment", "price": 1100 },
+    { "service": "Fruit (Mixed) Facial", "price": 1000 },
+    { "service": "Coffee Detox Facial", "price": 1500 },
+    { "service": "Skin Recharge Therapy", "price": 2000 },
+    { "service": "Diamond Bright Facial", "price": 3000 },
+    { "service": "Instant Brightening Treatment", "price": 2500 },
+    { "service": "Photo Facial", "price": 4000 },
+    { "service": "Party Ready Facial", "price": 1800 }
+  ],
+  "Facial": [
+    { "service": "O3+ Brightening", "price": 3800 },
+    { "service": "O3+ Power Brighter", "price": 4000 },
+    { "service": "O3+ Shine & Glow", "price": 2500 },
+    { "service": "Peel Off Mask O3+", "price": 1500 },
+    { "service": "Hydra Facial (Basic)", "price": 2500 },
+    { "service": "Hydra Premium", "price": 4000 },
+    { "service": "Galvanic (with) Natural Fruit", "price": 3000 },
+    { "service": "Anti Aging Treatment", "price": 3500 },
+    { "service": "Anti Tan Treatment", "price": 2500 },
+    { "service": "Oxygeno Facial", "price": 4000 },
+    { "service": "Skin Therapy", "price": "3000 onwards" },
+    { "service": "Skin Boosting Therapy", "price": "3500 onwards" }
+  ],
+  "Skin Care - Wax Rica": [
+    { "service": "Full Arms", "price": 650 },
+    { "service": "Half Legs", "price": 700 },
+    { "service": "Chest", "price": 650 },
+    { "service": "Back", "price": "750 onwards" },
+    { "service": "Face (Side Face & Neck)", "price": "500 onwards" },
+    { "service": "Side Lock", "price": 250 },
+    { "service": "Full Body", "price": "4000 onwards" }
+  ],
+  "Manicure & Pedicure": [
+    { "service": "Classic Manicure", "price": 600 },
+    { "service": "Signature Nail Care", "price": 500 },
+    { "service": "Luxury Hand Spa", "price": 1200 },
+    { "service": "Executive Care Treatment", "price": 1000 },
+    { "service": "Hand Polish", "price": 1500 },
+    { "service": "Candle Spa", "price": 1200 },
+    { "service": "Aroma Therapy", "price": 1000 },
+    { "service": "Classic Pedicure", "price": "500 onwards" },
+    { "service": "Spa Pedicure", "price": 800 },
+    { "service": "Bomb Pedicure", "price": 1500 },
+    { "service": "Detox Foot Spa", "price": 2000 },
+    { "service": "Ice Cool Pedicure", "price": 1800 },
+    { "service": "Deep Clean Pedicure", "price": 2000 },
+    { "service": "Stress Relief Foot Spa", "price": 1700 },
+    { "service": "Candle Foot Spa", "price": 1800 },
+    { "service": "Charcoal Foot Detox", "price": 1800 },
+    { "service": "Aroma Pedicure", "price": 1200 }
+  ],
+  "Body Spa": [
+    { "service": "Head Massage (30 min)", "price": 400 },
+    { "service": "Head Massage + Hair Wash", "price": 500 },
+    { "service": "Head Massage + Steam + Hair Wash", "price": 600 },
+    { "service": "Head & Foot Massage (40 min)", "price": 1500 },
+    { "service": "Back, Neck and Shoulder Massage (60 min)", "price": 1300 },
+    { "service": "Candle Spa (60 min)", "price": 2500 },
+    { "service": "Body Scrub (60 min)", "price": 1600 },
+    { "service": "Body Polishing", "price": 6000 }
+  ],
+  "Hair Styling": [
+    { "service": "Regular Basic Haircut", "price": 300 },
+    { "service": "Classic Gentleman Cut", "price": 500 },
+    { "service": "Smart Cut", "price": 400 },
+    { "service": "Simple Trim", "price": 350 },
+    { "service": "Clean Cut", "price": 400 },
+    { "service": "Beard Trim", "price": 150 },
+    { "service": "Gentleman Grooming", "price": 250 },
+    { "service": "Fashion Haircut", "price": 600 },
+    { "service": "Stylish Beard", "price": 200 },
+    { "service": "Clean Shave", "price": 120 },
+    { "service": "Deep Conditioning", "price": 400 }
+  ],
+  "Hair Colours": [
+    { "service": "Global (with Ammonia)", "price": "1000 onwards" },
+    { "service": "Global (Ammonia Free)", "price": "1200 onwards" },
+    { "service": "Moustache Colour", "price": 200 },
+    { "service": "Beard Colour", "price": 400 },
+    { "service": "Global Highlights", "price": "1500 onwards" },
+    { "service": "One Streak", "price": 250 },
+    { "service": "Fashion Colours", "price": 1800 }
+  ]
+};
+
+const formatPrice = (price: string | number) => {
+  if (typeof price === "string" && price.includes("onwards")) {
+    return `₹${price.replace(" onwards", "")} onwards`;
+  }
+  return `₹${price}`;
+};
+
+const mensCategories: ServiceCategory[] = Object.entries(mensMenuData).map(([title, services]) => ({
+  id: title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+  title,
+  services: services.map((s: any) => ({
+    name: s.service,
+    price: formatPrice(s.price),
+  })),
+}));
 
 export default function MensServicesPage() {
   const [visibleBlocks, setVisibleBlocks] = useState<Record<string, boolean>>({});
@@ -251,9 +221,8 @@ export default function MensServicesPage() {
                 key={category.id}
                 data-reveal
                 data-reveal-id={category.id}
-                className={`scroll-mt-36 transition-all duration-700 ${
-                  visibleBlocks[category.id] ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-                }`}
+                className={`scroll-mt-36 transition-all duration-700 ${visibleBlocks[category.id] ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                  }`}
               >
                 <h2 className="mb-5 text-3xl font-bold !text-white sm:text-4xl">{category.title}</h2>
 

@@ -7,31 +7,31 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 const menServices = [
   {
     title: "Precision Haircut",
-    price: "$85",
+    price: "₹485",
     description: "Tailored styling, straight razor neck shave, and hot towel finish.",
   },
   {
-    title: "Beard Sculpting",
-    price: "$55",
-    description: "Expert shaping, essential oil treatment, and sharp line detailing.",
+    title: "Keratin Treatment",
+    price: "From ₹3000 Onwards",
+    description: "Transform your hair with our expert keratin treatments, designed to smooth, strengthen, and add incredible shine.",
   },
   {
-    title: "The Executive Package",
-    price: "$130",
-    description: "Haircut, beard sculpt, and a revitalizing scalp massage.",
+    title: "Hydra Premium Facial",
+    price: "From ₹4000 Onwards",
+    description: "Advanced hydration therapy with deep exfoliation and nourishing serums for a radiant complexion.",
   },
 ];
 
 const womenServices = [
   {
-    title: "Signature Styling",
-    price: "From $120",
-    description: "Bespoke cuts, blowouts, and elegant updos for any occasion.",
+    title: "Hydra Facial",
+    price: "From ₹2500 ",
+    description: "Deeply cleanses, exfoliates, and hydrates the skin, leaving it refreshed and radiant.",
   },
   {
-    title: "Color Mastery",
-    price: "From $180",
-    description: "Balayage, foil highlights, and rich, multidimensional full color.",
+    title: "Keratin Treatment",
+    price: "From ₹3000 Onwards",
+    description: "Transform your hair with our expert keratin treatments, designed to smooth, strengthen, and add incredible shine.",
   },
   {
     title: "Bridal & Glamour",
@@ -44,7 +44,7 @@ export default function FeaturedServices() {
   return (
     <section className="bg-[#111111] text-white py-16 md:py-24 lg:py-32 border-t border-white/5">
       <div className="mx-auto w-full max-w-[1450px] px-4 sm:px-6 lg:px-8 2xl:px-10 flex flex-col gap-24 md:gap-32">
-        
+
         {/* MEN'S GROOMING SECTION */}
         <div className="flex flex-col gap-10">
           {/* Header Row */}
@@ -76,7 +76,7 @@ export default function FeaturedServices() {
               className="relative aspect-[4/3] w-full overflow-hidden rounded-md border border-white/5 bg-black"
             >
               <img
-                src="https://images.unsplash.com/photo-1593702284287-4161100431c3?auto=format&fit=crop&w=1200&q=80"
+                src="/men-groming.jpg"
                 alt="Men's Grooming"
                 className="absolute inset-0 h-full w-full object-cover grayscale opacity-80 transition-transform duration-1000 hover:scale-105"
               />
