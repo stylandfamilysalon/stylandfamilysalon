@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import { Playfair_Display, Inter } from "next/font/google";
+import { ChatbotWidget } from "@/components/chatbot/ChatbotWidget";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body className="bg-black" suppressHydrationWarning>
         <Navbar />
         <main className="pt-24">{children}</main>
+        <ChatbotWidget />
       </body>
     </html>
   );
