@@ -68,7 +68,7 @@ export async function POST(request: Request) {
       messages: [
         { role: 'system', content: injectedSystemPrompt },
         // filter out system/welcome messages from client if needed, or pass them
-        ...messages.filter((m: {id?: string, role: string, content: string}) => m.id !== 'welcome').map((m: {role: string, content: string}) => ({ role: m.role, content: m.content }))
+        ...messages.filter((m: {id?: string, role: string, content: string}) => m.id !== 'welcome').map((m: {role: string, content: string}) => ({ role: m.role as 'user' | 'assistant', content: m.content }))
       ],
       model: 'llama-3.3-70b-versatile',
       temperature: 0.2,
