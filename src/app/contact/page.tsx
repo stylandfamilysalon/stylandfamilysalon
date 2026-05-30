@@ -9,22 +9,22 @@ import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock } from "react-icons/fa"
 const contactDetails = [
   {
     title: "Address",
-    detail: "Styland Family salon Doctor's Colony, Madhapur, Hyderabad, Telangana 500081",
+    detail: "Doctor's Colony, Madhapur, Hyderabad, Telangana 500081, India",
     icon: FaMapMarkerAlt,
   },
   {
     title: "Phone Number",
-    detail: "+91-7702397311",
+    detail: "+91 77023 97311",
     icon: FaPhoneAlt,
   },
   {
-    title: "Email Address",
-    detail: "stylandfamilysalon@gmail.com",
-    icon: FaEnvelope,
+    title: "Appointments",
+    detail: "Online Booking Available",
+    icon: FaClock, // keeping clock icon or changing to a calendar icon? FaClock is imported. Let's stick with what we have.
   },
   {
-    title: "Open Hours",
-    detail: "Mon - Sun: 9:00 AM - 9:00 PM",
+    title: "Business Hours",
+    detail: "Monday – Sunday: 10:00 AM – 9:00 PM",
     icon: FaClock,
   },
 ];

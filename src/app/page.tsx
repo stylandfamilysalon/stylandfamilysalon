@@ -163,9 +163,8 @@ export default function Home() {
           {heroSlides.map((slide, index) => (
             <div
               key={slide}
-              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
-                activeSlide === index ? "opacity-100" : "opacity-0"
-              }`}
+              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${activeSlide === index ? "opacity-100" : "opacity-0"
+                }`}
               style={{ backgroundImage: `url(${slide})` }}
             />
           ))}
@@ -188,7 +187,7 @@ export default function Home() {
               <br />
               <span className="text-[#ffffff]">Shine Everyday,</span>
             </h1>
-            <p>Feeling so good</p>
+            <p>Premium unisex salon in Madhapur offering expert hair, beauty, and grooming services with exceptional care.</p>
 
             <div className="mt-7 flex items-center gap-4">
               <div className="flex -space-x-2">
@@ -203,8 +202,8 @@ export default function Home() {
                 </div>
               </div>
               <div>
-                <p className="text-sm font-semibold text-[#d4af37]">***** 4.9</p>
-                <p className="text-sm text-white/80">Loved by 10k+ trusted clients</p>
+                <p className="text-sm font-semibold text-[#d4af37]">***** 4.5/5 Stars</p>
+                <p className="text-sm text-white/80">487+ Google Reviews</p>
               </div>
             </div>
           </div>
@@ -212,16 +211,15 @@ export default function Home() {
           <div className="mt-10 border-t border-white/20 pt-6">
             <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
               <p className="max-w-xl text-sm text-white/90 sm:text-base">
-                Step into our barbershop for expert grooming, modern styles, and classic
-                techniques that keep you looking your best every day.
+                Schedule your appointment and let our experts take care of the rest.
               </p>
 
               <div className="flex flex-col gap-3 sm:flex-row">
                 <a
-                  href="tel:+12124567899"
+                  href="tel:+917702397311"
                   className="rounded-full border border-white/40 px-6 py-3 text-center text-sm font-semibold transition hover:border-[#d4af37] hover:text-[#d4af37]"
                 >
-                  +1 (212) 456-7899
+                  +91 77023 97311
                 </a>
                 <Link
                   href="/services"
@@ -240,9 +238,8 @@ export default function Home() {
                 type="button"
                 suppressHydrationWarning
                 onClick={() => setActiveSlide(index)}
-                className={`h-2.5 rounded-full transition-all ${
-                  activeSlide === index ? "w-8 bg-[#d4af37]" : "w-2.5 bg-white/50"
-                }`}
+                className={`h-2.5 rounded-full transition-all ${activeSlide === index ? "w-8 bg-[#d4af37]" : "w-2.5 bg-white/50"
+                  }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
             ))}
@@ -268,9 +265,8 @@ export default function Home() {
 
           <div className="mx-auto mt-12 flex w-full max-w-[1450px] flex-col gap-6 px-4 sm:px-6 md:flex-row md:justify-center md:gap-6 lg:px-8 2xl:px-10">
             <article
-              className={`relative h-[280px] w-full max-w-[350px] overflow-hidden rounded-xl bg-zinc-200 shadow-lg transition-all duration-700 ease-out ${
-                isGalleryVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
-              }`}
+              className={`relative h-[280px] w-full max-w-[350px] overflow-hidden rounded-xl bg-zinc-200 shadow-lg transition-all duration-700 ease-out ${isGalleryVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+                }`}
             >
               <img
                 src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=700&q=80"
@@ -283,9 +279,8 @@ export default function Home() {
             </article>
 
             <article
-              className={`relative mt-6 md:mt-12 h-[330px] w-full md:w-[420px] overflow-hidden rounded-xl bg-zinc-200 shadow-lg transition-all duration-700 delay-150 ease-out sm:h-[380px] ${
-              isGalleryVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
-            }`}
+              className={`relative mt-6 md:mt-12 h-[330px] w-full md:w-[420px] overflow-hidden rounded-xl bg-zinc-200 shadow-lg transition-all duration-700 delay-150 ease-out sm:h-[380px] ${isGalleryVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+                }`}
             >
               <img
                 src="https://images.unsplash.com/photo-1622296089863-eb7fc530daa8?auto=format&fit=crop&w=900&q=80"
@@ -305,9 +300,8 @@ export default function Home() {
             </article>
 
             <article
-              className={`relative h-[280px] w-full max-w-[350px] overflow-hidden rounded-xl bg-zinc-200 shadow-lg transition-all duration-700 delay-300 ease-out ${
-                isGalleryVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
-              }`}
+              className={`relative h-[280px] w-full max-w-[350px] overflow-hidden rounded-xl bg-zinc-200 shadow-lg transition-all duration-700 delay-300 ease-out ${isGalleryVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+                }`}
             >
               <img
                 src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?auto=format&fit=crop&w=700&q=80"
@@ -323,13 +317,13 @@ export default function Home() {
       </section>
 
       <FeaturedServices />
-      
+
       <BridalMakeupSection />
 
       <section
-          ref={servicesRef}
-            className="bg-[#ede9e5] px-4 py-20 text-black sm:px-6 md:py-28 lg:px-8 2xl:px-10"
-          >
+        ref={servicesRef}
+        className="bg-[#ede9e5] px-4 py-20 text-black sm:px-6 md:py-28 lg:px-8 2xl:px-10"
+      >
         <div className="mx-auto w-full max-w-[1450px] lg:grid lg:grid-cols-[minmax(280px,460px)_1fr] lg:gap-18">
           <div className="self-start lg:sticky lg:top-24">
             <span className="inline-flex items-center rounded-full bg-[#d4af37]/35 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-[#9a6b09]">
@@ -358,11 +352,10 @@ export default function Home() {
                   key={service.title}
                   data-service-item
                   data-service-index={index}
-                  className={`py-5 transition-all duration-700 ease-out will-change-transform sm:py-6 ${
-                    visibleServiceItems[index]
-                      ? "translate-y-0 opacity-100"
-                      : "translate-y-10 opacity-0"
-                  }`}
+                  className={`py-5 transition-all duration-700 ease-out will-change-transform sm:py-6 ${visibleServiceItems[index]
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-10 opacity-0"
+                    }`}
                 >
                   <h4 className="text-2xl font-bold leading-tight sm:text-4xl">{service.title}</h4>
                   <p className="mt-2 text-sm text-black/70 sm:text-base">{service.description}</p>
@@ -392,8 +385,8 @@ export default function Home() {
               <Link href="/book-appointment" className="cta-btn cta-btn-primary">
                 Book Your Slot
               </Link>
-              <a href="mailto:info@saloni.com" className="cta-btn cta-btn-secondary">
-                Info@Saloni.Com
+              <a href="tel:+917702397311" className="cta-btn cta-btn-secondary">
+                Call Now
               </a>
             </div>
 

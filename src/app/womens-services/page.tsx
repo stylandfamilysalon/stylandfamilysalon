@@ -300,11 +300,11 @@ export default function WomensServicesPage() {
             <h2 className="cta-title">Book your spot today &amp; step out looking your best.</h2>
 
             <div className="cta-actions">
-              <a href="tel:+12124567899" className="cta-btn cta-btn-primary">
+              <a href="tel:+917702397311" className="cta-btn cta-btn-primary">
                 Book Your Slot
               </a>
-              <a href="mailto:info@saloni.com" className="cta-btn cta-btn-secondary">
-                Info@Saloni.Com
+              <a href="tel:+917702397311" className="cta-btn cta-btn-secondary">
+                Call Now
               </a>
             </div>
 

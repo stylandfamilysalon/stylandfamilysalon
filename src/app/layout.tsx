@@ -13,6 +13,11 @@ const inter = Inter({
   variable: "--font-body",
 });
 
+export const metadata = {
+  title: "STYLAND Family Salon | Premium Unisex Salon in Madhapur, Hyderabad",
+  description: "Experience premium hair, beauty, and grooming services at STYLAND Family Salon, Madhapur, Hyderabad. Professional stylists, affordable pricing, and exceptional customer care.",
+};
+
 export default function RootLayout({
   children,
 }: {

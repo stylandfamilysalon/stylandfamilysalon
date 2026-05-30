@@ -68,11 +68,8 @@ export default function Footer() {
 
         <div className="grid gap-10 border-b border-black/10 py-10 lg:grid-cols-[1.1fr_1fr]">
           <div>
-            <h4 className="mb-6 max-w-xl text-4xl font-extrabold leading-tight text-[#1f232c] sm:text-5xl">
-              Stay sharp, stay confident
-              <br />- classic cuts &amp; modern
-              <br />
-              grooming.
+            <h4 className="mb-6 max-w-xl text-3xl font-extrabold leading-tight text-[#1f232c] sm:text-4xl">
+              Premium Hairstyle & Beauty Care Unisex Salon
             </h4>
 
             <div className="mb-2 flex flex-wrap items-center gap-2">
@@ -119,21 +116,21 @@ export default function Footer() {
             <div>
               <p className="mb-5 text-lg font-semibold text-[#4b5563]">Contact Us</p>
               <div className="space-y-3 text-lg text-[#1f232c]">
-                <p className="mb-0">+123 456 789 00</p>
-                <p className="mb-0">Info@saloni.com</p>
+                <p className="mb-0">+91 77023 97311</p>
                 <p className="mb-0">
-                  12/A, New Bustin
+                  Doctor's Colony, Madhapur,
                   <br />
-                  Tower Nyc, Us
+                  Hyderabad, Telangana 500081
                 </p>
+                <p className="mb-0">Monday – Sunday: 10:00 AM – 9:00 PM</p>
               </div>
             </div>
           </div>
         </div>
 
         <div className="flex flex-col gap-3 pt-8 text-base text-[#1f232c]/90 sm:flex-row sm:items-center sm:justify-between">
-          <p className="mb-0">© 2026 Salona All Rights Reserved</p>
-          <p className="mb-0">Made by Tempbix, Built with Framer.</p>
+          <p className="mb-0">© 2026 STYLAND Family Salon All Rights Reserved</p>
+          <p className="mb-0">Made by Nithin Guggilla</p>
         </div>
       </div>
     </footer>
