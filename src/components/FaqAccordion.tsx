@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-interface FAQItem {
+export interface FAQItem {
   question: string;
   answer: string;
 }
 
-const faqs: FAQItem[] = [
+export const defaultFaqs: FAQItem[] = [
   {
     question: "What services does Salon offer?",
     answer: "We offer a wide range of services including haircuts, styling, coloring, facials, beard grooming, and specialized hair treatments for men, women, and children.",
@@ -35,7 +35,11 @@ const faqs: FAQItem[] = [
   },
 ];
 
-export default function FaqAccordion() {
+interface FaqAccordionProps {
+  items?: FAQItem[];
+}
+
+export default function FaqAccordion({ items = defaultFaqs }: FaqAccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleAccordion = (index: number) => {
@@ -44,7 +48,7 @@ export default function FaqAccordion() {
 
   return (
     <div className="flex flex-col gap-3">
-      {faqs.map((faq, index) => {
+      {items.map((faq, index) => {
         const isOpen = openIndex === index;
 
         return (
