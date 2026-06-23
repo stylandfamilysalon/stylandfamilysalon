@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getServiceSupabase } from '@/lib/supabase';
+import { google } from 'googleapis';
 
 export async function POST(request: Request) {
   try {
@@ -76,6 +77,40 @@ export async function POST(request: Request) {
         success: false, 
         message: error.message 
       }, { status: 400 });
+    }
+
+    // 4. Append to Google Sheets
+    try {
+      if (
+        process.env.GOOGLE_SHEETS_CLIENT_EMAIL &&
+        process.env.GOOGLE_SHEETS_PRIVATE_KEY &&
+        process.env.GOOGLE_SHEETS_ID
+      ) {
+        const privateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY.replace(/\\n/g, "\n");
+        const auth = new google.auth.GoogleAuth({
+          credentials: {
+            client_email: process.env.GOOGLE_SHEETS_CLIENT_EMAIL,
+            private_key: privateKey,
+          },
+          scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+        });
+
+        const sheets = google.sheets({ version: "v4", auth });
+        const timestamp = new Date().toISOString();
+
+        await sheets.spreadsheets.values.append({
+          spreadsheetId: process.env.GOOGLE_SHEETS_ID,
+          range: "Sheet1!A:G", // Assuming columns: Timestamp, Name, Mobile, Email, Service, Date, Time
+          valueInputOption: "USER_ENTERED",
+          requestBody: {
+            values: [[timestamp, customer_name, mobile, email, service_name || 'N/A', appointment_date, appointment_time]],
+          },
+        });
+      } else {
+        console.warn("Google Sheets credentials are not fully configured in environment variables.");
+      }
+    } catch (sheetsError) {
+      console.error("Google Sheets append failed:", sheetsError);
     }
 
     return NextResponse.json({ 

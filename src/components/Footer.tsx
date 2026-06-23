@@ -8,6 +8,7 @@ const essentialPages = [
   { label: "About", href: "/about" },
   { label: "Expert Barbers", href: "/men" },
   { label: "Gallery", href: "/gallery" },
+  { label: "Bridal Makeup", href: "/bridal-makeup" },
   { label: "Faq", href: "/faq" },
 ];
 

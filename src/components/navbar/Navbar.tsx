@@ -51,6 +51,12 @@ const Navbar = () => {
           <Link href="/" className="text-white hover:text-[#d4af37] transition">
             Home
           </Link>
+          <Link href="/about" className="text-white hover:text-[#d4af37] transition">
+            About Us
+          </Link>
+          <Link href="/gallery" className="text-white hover:text-[#d4af37] transition">
+            Gallery
+          </Link>
 
           {/* SERVICES DROPDOWN DESKTOP */}
           <div
@@ -82,6 +88,12 @@ const Navbar = () => {
                     className="block px-4 py-2 text-white hover:text-[#d4af37] transition"
                   >
                     Women
+                  </Link>
+                  <Link
+                    href="/bridal-makeup"
+                    className="block px-4 py-2 text-white hover:text-[#d4af37] transition whitespace-nowrap"
+                  >
+                    Bridal Makeup
                   </Link>
                 </motion.div>
               )}
@@ -149,6 +161,20 @@ const Navbar = () => {
               >
                 Home
               </Link>
+              <Link
+                href="/about"
+                onClick={closeMenu}
+                className="text-white text-lg hover:text-[#d4af37] transition"
+              >
+                About Us
+              </Link>
+              <Link
+                href="/gallery"
+                onClick={closeMenu}
+                className="text-white text-lg hover:text-[#d4af37] transition"
+              >
+                Gallery
+              </Link>
 
               {/* MOBILE SERVICES DROPDOWN */}
               <div>
@@ -181,6 +207,13 @@ const Navbar = () => {
                         className="text-gray-300 hover:text-[#d4af37] transition"
                       >
                         Women
+                      </Link>
+                      <Link
+                        href="/bridal-makeup"
+                        onClick={closeMenu}
+                        className="text-gray-300 hover:text-[#d4af37] transition"
+                      >
+                        Bridal Makeup
                       </Link>
                     </motion.div>
                   )}
