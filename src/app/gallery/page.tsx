@@ -2,8 +2,31 @@ import Image from "next/image";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "Gallery | STYLAND Family Salon",
-  description: "Browse our gallery to see our premium salon services, haircuts, styling, and the luxurious ambiance of STYLAND Family Salon.",
+  title: "Salon Gallery | Haircuts, Bridal Makeup & Styling Looks",
+  description: "Browse our gallery of haircuts, hair colour, bridal makeup, and beauty transformations at STYLAND Family Salon, Madhapur, Hyderabad. Real results, real clients.",
+  alternates: {
+    canonical: "https://www.stylandfamilysalon.in/gallery",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "name": "STYLAND Family Salon – Style Gallery",
+  "url": "https://www.stylandfamilysalon.in/gallery",
+  "description": "Gallery showcasing real client transformations including haircuts, colour treatments, bridal makeup, and beauty services at STYLAND Family Salon, Hyderabad.",
+  "author": {
+    "@type": "Organization",
+    "name": "STYLAND Family Salon",
+    "url": "https://www.stylandfamilysalon.in/"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.stylandfamilysalon.in/" },
+      { "@type": "ListItem", "position": 2, "name": "Gallery", "item": "https://www.stylandfamilysalon.in/gallery" }
+    ]
+  }
 };
 
 export default function GalleryPage() {
@@ -15,7 +38,9 @@ export default function GalleryPage() {
   }));
 
   return (
-    <main className="bg-white text-black font-body w-full overflow-hidden">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <main className="bg-white text-black font-body w-full overflow-hidden">
       {/* Hero Section */}
       <section className="relative flex h-[300px] w-full items-center justify-center overflow-hidden bg-black md:h-[400px]">
         {/* Background Image with Overlay */}
@@ -78,5 +103,6 @@ export default function GalleryPage() {
 
       <Footer />
     </main>
+    </>
   );
 }

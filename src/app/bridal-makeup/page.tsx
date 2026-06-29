@@ -4,13 +4,48 @@ import Footer from "@/components/Footer";
 import { Play, Check, Users, MapPin, Smile, Award, Quote } from "lucide-react";
 
 export const metadata = {
-  title: "Bridal Makeup Services in Hyderabad | STYLAND Family Salon",
-  description: "Luxury bridal makeup services in Hyderabad. HD makeup, airbrush bridal makeup, hairstyling, pre-bridal packages, and personalized bridal beauty experiences at STYLAND Family Salon.",
+  title: "Bridal Makeup Services in Madhapur, Hyderabad | STYLAND",
+  description: "Book professional bridal and pre-bridal makeup packages in Hyderabad. STYLAND Family Salon offers MAC, Kryolan & HD airbrush makeup for your big day.",
+  alternates: {
+    canonical: "https://www.stylandfamilysalon.in/bridal-makeup",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Bridal Makeup & Pre-Bridal Packages in Hyderabad",
+  "description": "Professional bridal makeup artists in Madhapur, Hyderabad. Specializing in HD makeup, airbrush makeup, saree draping, and customized pre-bridal packages.",
+  "url": "https://www.stylandfamilysalon.in/bridal-makeup",
+  "provider": {
+    "@type": "HairSalon",
+    "name": "STYLAND Family Salon",
+    "url": "https://www.stylandfamilysalon.in/"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Bridal Packages",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Silver Bridal Package" }, "price": "14999", "priceCurrency": "INR" },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gold HD Bridal Package" }, "price": "21999", "priceCurrency": "INR" },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Platinum Airbrush Bridal Package" }, "price": "29999", "priceCurrency": "INR" },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Groom Makeup Package" }, "price": "14999", "priceCurrency": "INR" }
+    ]
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.stylandfamilysalon.in/" },
+      { "@type": "ListItem", "position": 2, "name": "Bridal Makeup", "item": "https://www.stylandfamilysalon.in/bridal-makeup" }
+    ]
+  }
 };
 
 export default function BridalMakeupPage() {
   return (
-    <main className="font-body w-full overflow-hidden bg-[#F4EFEA]">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <main className="font-body w-full overflow-hidden bg-[#F4EFEA]">
       
       {/* 1. STYLAND Glamour Moments (Mocha Background) */}
       <section className="w-full bg-[#8B624C] py-16 sm:py-24">
@@ -365,5 +400,6 @@ export default function BridalMakeupPage() {
 
       <Footer />
     </main>
+    </>
   );
 }

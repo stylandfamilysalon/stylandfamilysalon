@@ -5,9 +5,81 @@ import FaqAccordion from "@/components/FaqAccordion";
 import { Scissors, BadgeCheck, Sparkles, Droplets, Armchair } from "lucide-react";
 
 export const metadata = {
-  title: "About Us | STYLAND Family Salon",
-  description: "Learn more about STYLAND Family Salon, our journey, premium grooming services, and the expert professionals ready to transform your look.",
+  title: "About STYLAND Family Salon | Est. 2000 in Hyderabad",
+  description: "Est. in 2021, STYLAND Family Salon has served Hyderabad for 25+ years. Meet our expert stylists, learn our story, and discover why thousands choose us every month.",
+  alternates: {
+    canonical: "https://www.stylandfamilysalon.in/about",
+  },
 };
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About STYLAND Family Salon",
+    "url": "https://www.stylandfamilysalon.in/about",
+    "description": "Learn about STYLAND Family Salon's 25-year journey, our skilled team of stylists, and our commitment to premium beauty and grooming in Madhapur, Hyderabad.",
+    "mainEntity": {
+      "@type": "HairSalon",
+      "name": "STYLAND Family Salon",
+      "foundingDate": "2000",
+      "url": "https://www.stylandfamilysalon.in/"
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.stylandfamilysalon.in/" },
+        { "@type": "ListItem", "position": 2, "name": "About Us", "item": "https://www.stylandfamilysalon.in/about" }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What services does STYLAND Family Salon offer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We offer men's grooming (haircuts, beard trims, facials), women's beauty (hair treatments, keratin, waxing, facials), bridal makeup packages, and body spa services for the whole family."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I book an appointment at STYLAND Family Salon?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can book an appointment online at stylandfamilysalon.in/book-appointment or call us at +91 77023 97311. Walk-ins are also welcome during our working hours."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the opening hours of STYLAND Family Salon?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We are open 7 days a week, Monday to Sunday, from 10:00 AM to 9:00 PM."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What payment methods do you accept?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We accept cash, UPI (GPay, PhonePe, Paytm), and major credit/debit cards."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are salon services customizable at STYLAND?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, every visit is personalized to your style, hair type, and preferences. Our stylists consult with you before any service to ensure the best results."
+        }
+      }
+    ]
+  }
+];
 
 const workingHours = [
   { day: "Mon", hours: "10:00 AM - 9:00 PM" },
@@ -17,7 +89,9 @@ const workingHours = [
   { day: "Fri", hours: "10:00 AM - 9:00 PM" },
   { day: "Sat", hours: "10:00 AM - 9:00 PM" },
   { day: "Sun", hours: "10:00 AM - 9:00 PM" },
+  
 ];
+
 
 const milestones = [
   {
@@ -54,8 +128,10 @@ const milestones = [
 
 export default function AboutPage() {
   return (
-    <main className="bg-white text-black font-body w-full overflow-hidden">
-      {/* Hero Section */}
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <main className="bg-white text-black font-body w-full overflow-hidden">
+        {/* Hero Section */}
       <section className="relative flex h-[350px] w-full items-center justify-center overflow-hidden bg-black md:h-[450px]">
         {/* Background Image with Overlay */}
         <div
@@ -303,5 +379,6 @@ export default function AboutPage() {
 
       <Footer />
     </main>
+    </>
   );
 }

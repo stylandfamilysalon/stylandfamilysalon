@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STYLAND Salon – Complete SEO Package</title>
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --accent: #c9a96e;
+    --accent2: #e8c99a;
+    --text: #e8e8e8;
+    --muted: #888;
+    --green: #4ade80;
+    --red: #f87171;
+    --blue: #60a5fa;
+    --purple: #a78bfa;
+    --font-mono: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    --font-sans: 'Inter', -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .header {
+    background: linear-gradient(135deg, #1a1a1a 0%, #111 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 32px 40px;
+  }
+  .header-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #000;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+  .header h1 { font-size: 26px; font-weight: 700; color: #fff; }
+  .header p { color: var(--muted); margin-top: 6px; font-size: 13px; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 40px; }
+  
+  /* Issue banner */
+  .issues-box {
+    background: #1c1410;
+    border: 1px solid #6b3f1a;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 40px;
+  }
+  .issues-box h3 { color: #f97316; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+  .issues-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .issues-box li { display: flex; align-items: flex-start; gap: 10px; color: #fcd34d; font-size: 13px; }
+  .issues-box li::before { content: "⚠"; color: #f97316; flex-shrink: 0; margin-top: 1px; }
+  
+  /* Page section */
+  .page-section {
+    margin-bottom: 56px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .page-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .page-icon {
+    width: 34px; height: 34px;
+    background: linear-gradient(135deg, var(--accent), #8b6914);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .page-header-text h2 { font-size: 15px; font-weight: 700; color: #fff; }
+  .page-header-text p { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .page-body { padding: 24px; display: flex; flex-direction: column; gap: 20px; }
+
+  /* Meta card */
+  .meta-card {
+    background: #111;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .meta-card-label {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .meta-card-label span { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); }
+  .char-count { font-size: 11px; color: var(--muted); }
+  .char-count.good { color: var(--green); }
+  .char-count.warn { color: #f97316; }
+  .meta-value {
+    padding: 14px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent2);
+    line-height: 1.5;
+    word-break: break-all;
+  }
+
+  /* Code block */
+  .code-block {
+    background: #0a0a0a;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .code-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .code-header span { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+  .code-header .lang { color: var(--purple); }
+  .code-header .copy-hint { font-size: 10px; color: var(--muted); }
+  .code-body {
+    padding: 16px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    line-height: 1.7;
+    overflow-x: auto;
+    white-space: pre;
+  }
+  /* Syntax highlighting */
+  .tok-tag { color: #60a5fa; }
+  .tok-attr { color: #a78bfa; }
+  .tok-val { color: #4ade80; }
+  .tok-str { color: #f9a8d4; }
+  .tok-com { color: #555; font-style: italic; }
+  .tok-key { color: #fbbf24; }
+  .tok-brace { color: #e8e8e8; }
+  .tok-num { color: #fb923c; }
+
+  /* Notes */
+  .note-box {
+    background: #0f1620;
+    border: 1px solid #1e3a5f;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 12.5px;
+    color: #93c5fd;
+  }
+  .note-box strong { color: #60a5fa; }
+
+  /* Divider label */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-weight: 600;
+    margin: 4px 0;
+  }
+  .section-divider::before, .section-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 40px;
+  }
+  .toc h3 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 14px; }
+  .toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+  .toc-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 12px;
+    background: #111;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 12.5px;
+    color: var(--text);
+  }
+  .toc-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  
+  .impl-note {
+    background: #0f1a0f;
+    border: 1px solid #1a3a1a;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-top: 40px;
+  }
+  .impl-note h3 { color: var(--green); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
+  .impl-note ol { padding-left: 18px; display: flex; flex-direction: column; gap: 8px; color: #a7f3d0; font-size: 13px; }
+  .impl-note ol li { padding-left: 4px; }
+  
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 20px 40px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-badge">SEO Package</div>
+  <h1>STYLAND Family Salon — Complete SEO Metadata & Schema</h1>
+  <p>stylandfamilysalon.in · Madhapur, Hyderabad · Generated June 2026</p>
+</div>
+
+<div class="container">
+
+  <!-- Critical Issues -->
+  <div class="issues-box">
+    <h3>⚠ Critical Issues Found During Audit</h3>
+    <ul>
+      <li><strong>/men, /women pages:</strong> Title tag and meta description are identical to the homepage — Google will treat these as duplicate/thin pages and may not rank them independently.</li>
+      <li><strong>/gallery, /contact, /book-appointment:</strong> No unique title/meta detected — inheriting homepage defaults.</li>
+      <li><strong>No Schema markup detected</strong> on any page — missing LocalBusiness, HairSalon, BreadcrumbList, Service, FAQPage schemas.</li>
+      <li><strong>No canonical tags</strong> confirmed in page source — risk of duplicate content between www/non-www and trailing slash variants.</li>
+    </ul>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <h3>Pages Covered</h3>
+    <div class="toc-grid">
+      <div class="toc-item"><div class="toc-dot"></div>Homepage (/)</div>
+      <div class="toc-item"><div class="toc-dot"></div>About (/about)</div>
+      <div class="toc-item"><div class="toc-dot"></div>Gallery (/gallery)</div>
+      <div class="toc-item"><div class="toc-dot"></div>Men's Services (/men)</div>
+      <div class="toc-item"><div class="toc-dot"></div>Women's Services (/women)</div>
+      <div class="toc-item"><div class="toc-dot"></div>Bridal Makeup (/bridal-makeup)</div>
+      <div class="toc-item"><div class="toc-dot"></div>Contact (/contact)</div>
+      <div class="toc-item"><div class="toc-dot"></div>Book Appointment (/book-appointment)</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- PAGE 1: HOMEPAGE -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div class="page-section">
+    <div class="page-header">
+      <div class="page-icon">🏠</div>
+      <div class="page-header-text">
+        <h2>Homepage</h2>
+        <p>https://www.stylandfamilysalon.in/</p>
+      </div>
+    </div>
+    <div class="page-body">
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Meta Title</span>
+          <span class="char-count good">57 chars ✓</span>
+        </div>
+        <div class="meta-value">STYLAND Family Salon | Unisex Salon in Madhapur, Hyderabad</div>
+      </div>
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Meta Description</span>
+          <span class="char-count good">156 chars ✓</span>
+        </div>
+        <div class="meta-value">Visit STYLAND Family Salon in Madhapur, Hyderabad — premium unisex salon offering haircuts, bridal makeup, keratin treatments, facials & more. Book your appointment today.</div>
+      </div>
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Canonical Tag</span>
+        </div>
+        <div class="meta-value">&lt;link rel="canonical" href="https://www.stylandfamilysalon.in/" /&gt;</div>
+      </div>
+
+      <div class="section-divider">Schema Markup — Paste in &lt;head&gt;</div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="lang">JSON-LD · HairSalon + LocalBusiness</span>
+          <span class="copy-hint">Add to &lt;head&gt; of homepage</span>
+        </div>
+        <div class="code-body"><span class="tok-tag">&lt;script</span> <span class="tok-attr">type</span><span class="tok-brace">=</span><span class="tok-str">"application/ld+json"</span><span class="tok-tag">&gt;</span>
+<span class="tok-brace">{</span>
+  <span class="tok-key">"@context"</span><span class="tok-brace">:</span> <span class="tok-str">"https://schema.org"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"HairSalon"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"STYLAND Family Salon"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"url"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"logo"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/logo.png"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"image"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/bridal-makeup.png"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"description"</span><span class="tok-brace">:</span> <span class="tok-str">"Premium unisex salon in Madhapur, Hyderabad offering haircuts, bridal makeup, keratin treatments, facials, and grooming services for men, women, and families."</span><span class="tok-brace">,</span>
+  <span class="tok-key">"telephone"</span><span class="tok-brace">:</span> <span class="tok-str">"+917702397311"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"email"</span><span class="tok-brace">:</span> <span class="tok-str">"info@stylandfamilysalon.in"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"foundingDate"</span><span class="tok-brace">:</span> <span class="tok-str">"2000"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"priceRange"</span><span class="tok-brace">:</span> <span class="tok-str">"₹₹"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"currenciesAccepted"</span><span class="tok-brace">:</span> <span class="tok-str">"INR"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"paymentAccepted"</span><span class="tok-brace">:</span> <span class="tok-str">"Cash, UPI, Credit Card, Debit Card"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"address"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+    <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"PostalAddress"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"streetAddress"</span><span class="tok-brace">:</span> <span class="tok-str">"Doctor's Colony, Madhapur"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"addressLocality"</span><span class="tok-brace">:</span> <span class="tok-str">"Hyderabad"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"addressRegion"</span><span class="tok-brace">:</span> <span class="tok-str">"Telangana"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"postalCode"</span><span class="tok-brace">:</span> <span class="tok-str">"500081"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"addressCountry"</span><span class="tok-brace">:</span> <span class="tok-str">"IN"</span>
+  <span class="tok-brace">},</span>
+  <span class="tok-key">"geo"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+    <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"GeoCoordinates"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"latitude"</span><span class="tok-brace">:</span> <span class="tok-num">17.4401</span><span class="tok-brace">,</span>
+    <span class="tok-key">"longitude"</span><span class="tok-brace">:</span> <span class="tok-num">78.3489</span>
+  <span class="tok-brace">},</span>
+  <span class="tok-key">"openingHoursSpecification"</span><span class="tok-brace">:</span> <span class="tok-brace">[</span>
+    <span class="tok-brace">{</span>
+      <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"OpeningHoursSpecification"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"dayOfWeek"</span><span class="tok-brace">:</span> <span class="tok-brace">[</span><span class="tok-str">"Monday"</span><span class="tok-brace">,</span><span class="tok-str">"Tuesday"</span><span class="tok-brace">,</span><span class="tok-str">"Wednesday"</span><span class="tok-brace">,</span><span class="tok-str">"Thursday"</span><span class="tok-brace">,</span><span class="tok-str">"Friday"</span><span class="tok-brace">,</span><span class="tok-str">"Saturday"</span><span class="tok-brace">,</span><span class="tok-str">"Sunday"</span><span class="tok-brace">]</span><span class="tok-brace">,</span>
+      <span class="tok-key">"opens"</span><span class="tok-brace">:</span> <span class="tok-str">"10:00"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"closes"</span><span class="tok-brace">:</span> <span class="tok-str">"21:00"</span>
+    <span class="tok-brace">}</span>
+  <span class="tok-brace">],</span>
+  <span class="tok-key">"aggregateRating"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+    <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"AggregateRating"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"ratingValue"</span><span class="tok-brace">:</span> <span class="tok-str">"4.5"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"reviewCount"</span><span class="tok-brace">:</span> <span class="tok-str">"487"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"bestRating"</span><span class="tok-brace">:</span> <span class="tok-str">"5"</span>
+  <span class="tok-brace">},</span>
+  <span class="tok-key">"hasOfferCatalog"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+    <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"OfferCatalog"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Salon Services"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"itemListElement"</span><span class="tok-brace">:</span> <span class="tok-brace">[</span>
+      <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Offer"</span><span class="tok-brace">,</span> <span class="tok-key">"itemOffered"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Service"</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Men's Grooming &amp; Haircut"</span> <span class="tok-brace">}</span> <span class="tok-brace">},</span>
+      <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Offer"</span><span class="tok-brace">,</span> <span class="tok-key">"itemOffered"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Service"</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Women's Beauty &amp; Hair Treatments"</span> <span class="tok-brace">}</span> <span class="tok-brace">},</span>
+      <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Offer"</span><span class="tok-brace">,</span> <span class="tok-key">"itemOffered"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Service"</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Bridal Makeup &amp; Pre-Bridal Packages"</span> <span class="tok-brace">}</span> <span class="tok-brace">},</span>
+      <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Offer"</span><span class="tok-brace">,</span> <span class="tok-key">"itemOffered"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Service"</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Keratin Treatment"</span> <span class="tok-brace">}</span> <span class="tok-brace">},</span>
+      <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Offer"</span><span class="tok-brace">,</span> <span class="tok-key">"itemOffered"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Service"</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Hydra Facial"</span> <span class="tok-brace">}</span> <span class="tok-brace">}</span>
+    <span class="tok-brace">]</span>
+  <span class="tok-brace">},</span>
+  <span class="tok-key">"sameAs"</span><span class="tok-brace">:</span> <span class="tok-brace">[</span>
+    <span class="tok-str">"https://www.facebook.com/stylandfamilysalon"</span><span class="tok-brace">,</span>
+    <span class="tok-str">"https://www.instagram.com/stylandfamilysalon"</span>
+  <span class="tok-brace">]</span>
+<span class="tok-brace">}</span>
+<span class="tok-tag">&lt;/script&gt;</span></div>
+      </div>
+
+      <div class="note-box">
+        <strong>💡 Note:</strong> Replace <code>sameAs</code> URLs with your actual Facebook/Instagram/YouTube profile links. Verify the geo coordinates for your exact Doctor's Colony location on Google Maps. The <code>aggregateRating</code> uses your live 4.5 / 487 reviews — update this periodically.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- PAGE 2: ABOUT -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div class="page-section">
+    <div class="page-header">
+      <div class="page-icon">👤</div>
+      <div class="page-header-text">
+        <h2>About Us</h2>
+        <p>https://www.stylandfamilysalon.in/about</p>
+      </div>
+    </div>
+    <div class="page-body">
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Meta Title</span>
+          <span class="char-count good">57 chars ✓</span>
+        </div>
+        <div class="meta-value">About STYLAND Family Salon | Est. 2000 in Hyderabad</div>
+      </div>
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Meta Description</span>
+          <span class="char-count good">155 chars ✓</span>
+        </div>
+        <div class="meta-value">Est. in 2000, STYLAND Family Salon has served Hyderabad for 25+ years. Meet our expert stylists, learn our story, and discover why thousands choose us every month.</div>
+      </div>
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Canonical Tag</span>
+        </div>
+        <div class="meta-value">&lt;link rel="canonical" href="https://www.stylandfamilysalon.in/about" /&gt;</div>
+      </div>
+
+      <div class="section-divider">Schema Markup</div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="lang">JSON-LD · About Page + FAQPage</span>
+          <span class="copy-hint">Add to &lt;head&gt; of /about</span>
+        </div>
+        <div class="code-body"><span class="tok-tag">&lt;script</span> <span class="tok-attr">type</span><span class="tok-brace">=</span><span class="tok-str">"application/ld+json"</span><span class="tok-tag">&gt;</span>
+<span class="tok-brace">[</span>
+  <span class="tok-brace">{</span>
+    <span class="tok-key">"@context"</span><span class="tok-brace">:</span> <span class="tok-str">"https://schema.org"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"AboutPage"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"About STYLAND Family Salon"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"url"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/about"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"description"</span><span class="tok-brace">:</span> <span class="tok-str">"Learn about STYLAND Family Salon's 25-year journey, our skilled team of stylists, and our commitment to premium beauty and grooming in Madhapur, Hyderabad."</span><span class="tok-brace">,</span>
+    <span class="tok-key">"mainEntity"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+      <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"HairSalon"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"STYLAND Family Salon"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"foundingDate"</span><span class="tok-brace">:</span> <span class="tok-str">"2000"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"url"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/"</span>
+    <span class="tok-brace">},</span>
+    <span class="tok-key">"breadcrumb"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+      <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"BreadcrumbList"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"itemListElement"</span><span class="tok-brace">:</span> <span class="tok-brace">[</span>
+        <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ListItem"</span><span class="tok-brace">,</span> <span class="tok-key">"position"</span><span class="tok-brace">:</span> <span class="tok-num">1</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Home"</span><span class="tok-brace">,</span> <span class="tok-key">"item"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/"</span> <span class="tok-brace">},</span>
+        <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ListItem"</span><span class="tok-brace">,</span> <span class="tok-key">"position"</span><span class="tok-brace">:</span> <span class="tok-num">2</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"About Us"</span><span class="tok-brace">,</span> <span class="tok-key">"item"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/about"</span> <span class="tok-brace">}</span>
+      <span class="tok-brace">]</span>
+    <span class="tok-brace">}</span>
+  <span class="tok-brace">},</span>
+  <span class="tok-brace">{</span>
+    <span class="tok-key">"@context"</span><span class="tok-brace">:</span> <span class="tok-str">"https://schema.org"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"FAQPage"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"mainEntity"</span><span class="tok-brace">:</span> <span class="tok-brace">[</span>
+      <span class="tok-brace">{</span>
+        <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Question"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"What services does STYLAND Family Salon offer?"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"acceptedAnswer"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+          <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Answer"</span><span class="tok-brace">,</span>
+          <span class="tok-key">"text"</span><span class="tok-brace">:</span> <span class="tok-str">"We offer men's grooming (haircuts, beard trims, facials), women's beauty (hair treatments, keratin, waxing, facials), bridal makeup packages, and body spa services for the whole family."</span>
+        <span class="tok-brace">}</span>
+      <span class="tok-brace">},</span>
+      <span class="tok-brace">{</span>
+        <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Question"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"How can I book an appointment at STYLAND Family Salon?"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"acceptedAnswer"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+          <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Answer"</span><span class="tok-brace">,</span>
+          <span class="tok-key">"text"</span><span class="tok-brace">:</span> <span class="tok-str">"You can book an appointment online at stylandfamilysalon.in/book-appointment or call us at +91 77023 97311. Walk-ins are also welcome during our working hours."</span>
+        <span class="tok-brace">}</span>
+      <span class="tok-brace">},</span>
+      <span class="tok-brace">{</span>
+        <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Question"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"What are the opening hours of STYLAND Family Salon?"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"acceptedAnswer"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+          <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Answer"</span><span class="tok-brace">,</span>
+          <span class="tok-key">"text"</span><span class="tok-brace">:</span> <span class="tok-str">"We are open 7 days a week, Monday to Sunday, from 10:00 AM to 9:00 PM."</span>
+        <span class="tok-brace">}</span>
+      <span class="tok-brace">},</span>
+      <span class="tok-brace">{</span>
+        <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Question"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"What payment methods do you accept?"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"acceptedAnswer"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+          <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Answer"</span><span class="tok-brace">,</span>
+          <span class="tok-key">"text"</span><span class="tok-brace">:</span> <span class="tok-str">"We accept cash, UPI (GPay, PhonePe, Paytm), and major credit/debit cards."</span>
+        <span class="tok-brace">}</span>
+      <span class="tok-brace">},</span>
+      <span class="tok-brace">{</span>
+        <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Question"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Are salon services customizable at STYLAND?"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"acceptedAnswer"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+          <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Answer"</span><span class="tok-brace">,</span>
+          <span class="tok-key">"text"</span><span class="tok-brace">:</span> <span class="tok-str">"Yes, every visit is personalized to your style, hair type, and preferences. Our stylists consult with you before any service to ensure the best results."</span>
+        <span class="tok-brace">}</span>
+      <span class="tok-brace">}</span>
+    <span class="tok-brace">]</span>
+  <span class="tok-brace">}</span>
+<span class="tok-brace">]</span>
+<span class="tok-tag">&lt;/script&gt;</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- PAGE 3: GALLERY -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div class="page-section">
+    <div class="page-header">
+      <div class="page-icon">🖼</div>
+      <div class="page-header-text">
+        <h2>Gallery</h2>
+        <p>https://www.stylandfamilysalon.in/gallery</p>
+      </div>
+    </div>
+    <div class="page-body">
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Meta Title</span>
+          <span class="char-count good">56 chars ✓</span>
+        </div>
+        <div class="meta-value">Salon Gallery | Haircuts, Bridal Makeup & Styling Looks</div>
+      </div>
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Meta Description</span>
+          <span class="char-count good">153 chars ✓</span>
+        </div>
+        <div class="meta-value">Browse our gallery of haircuts, hair colour, bridal makeup, and beauty transformations at STYLAND Family Salon, Madhapur, Hyderabad. Real results, real clients.</div>
+      </div>
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Canonical Tag</span>
+        </div>
+        <div class="meta-value">&lt;link rel="canonical" href="https://www.stylandfamilysalon.in/gallery" /&gt;</div>
+      </div>
+
+      <div class="section-divider">Schema Markup</div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="lang">JSON-LD · ImageGallery + BreadcrumbList</span>
+          <span class="copy-hint">Add to &lt;head&gt; of /gallery</span>
+        </div>
+        <div class="code-body"><span class="tok-tag">&lt;script</span> <span class="tok-attr">type</span><span class="tok-brace">=</span><span class="tok-str">"application/ld+json"</span><span class="tok-tag">&gt;</span>
+<span class="tok-brace">{</span>
+  <span class="tok-key">"@context"</span><span class="tok-brace">:</span> <span class="tok-str">"https://schema.org"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ImageGallery"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"STYLAND Family Salon – Style Gallery"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"url"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/gallery"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"description"</span><span class="tok-brace">:</span> <span class="tok-str">"Gallery showcasing real client transformations including haircuts, colour treatments, bridal makeup, and beauty services at STYLAND Family Salon, Hyderabad."</span><span class="tok-brace">,</span>
+  <span class="tok-key">"author"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+    <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Organization"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"STYLAND Family Salon"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"url"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/"</span>
+  <span class="tok-brace">},</span>
+  <span class="tok-key">"breadcrumb"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+    <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"BreadcrumbList"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"itemListElement"</span><span class="tok-brace">:</span> <span class="tok-brace">[</span>
+      <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ListItem"</span><span class="tok-brace">,</span> <span class="tok-key">"position"</span><span class="tok-brace">:</span> <span class="tok-num">1</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Home"</span><span class="tok-brace">,</span> <span class="tok-key">"item"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/"</span> <span class="tok-brace">},</span>
+      <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ListItem"</span><span class="tok-brace">,</span> <span class="tok-key">"position"</span><span class="tok-brace">:</span> <span class="tok-num">2</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Gallery"</span><span class="tok-brace">,</span> <span class="tok-key">"item"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/gallery"</span> <span class="tok-brace">}</span>
+    <span class="tok-brace">]</span>
+  <span class="tok-brace">}</span>
+<span class="tok-brace">}</span>
+<span class="tok-tag">&lt;/script&gt;</span></div>
+      </div>
+
+      <div class="note-box">
+        <strong>💡 Image SEO:</strong> Every gallery image <code>&lt;img&gt;</code> tag must have a descriptive <code>alt</code> attribute. Example: <code>alt="Bridal HD makeup look at STYLAND Salon Hyderabad"</code>. This drives Google Image Search traffic significantly for salons.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- PAGE 4: MEN'S SERVICES -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div class="page-section">
+    <div class="page-header">
+      <div class="page-icon">✂</div>
+      <div class="page-header-text">
+        <h2>Men's Services</h2>
+        <p>https://www.stylandfamilysalon.in/men</p>
+      </div>
+    </div>
+    <div class="page-body">
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Meta Title</span>
+          <span class="char-count good">59 chars ✓</span>
+        </div>
+        <div class="meta-value">Men's Grooming & Haircut Services in Madhapur, Hyderabad</div>
+      </div>
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Meta Description</span>
+          <span class="char-count good">158 chars ✓</span>
+        </div>
+        <div class="meta-value">Haircuts from ₹300, beard trims, keratin treatments, facials & body spa for men at STYLAND Salon, Madhapur. Expert male groomers. Walk-in or book online.</div>
+      </div>
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Canonical Tag</span>
+        </div>
+        <div class="meta-value">&lt;link rel="canonical" href="https://www.stylandfamilysalon.in/men" /&gt;</div>
+      </div>
+
+      <div class="section-divider">Schema Markup</div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="lang">JSON-LD · Service + ItemList (Men's Services)</span>
+          <span class="copy-hint">Add to &lt;head&gt; of /men</span>
+        </div>
+        <div class="code-body"><span class="tok-tag">&lt;script</span> <span class="tok-attr">type</span><span class="tok-brace">=</span><span class="tok-str">"application/ld+json"</span><span class="tok-tag">&gt;</span>
+<span class="tok-brace">[</span>
+  <span class="tok-brace">{</span>
+    <span class="tok-key">"@context"</span><span class="tok-brace">:</span> <span class="tok-str">"https://schema.org"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Service"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Men's Grooming &amp; Salon Services in Hyderabad"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"description"</span><span class="tok-brace">:</span> <span class="tok-str">"Comprehensive men's grooming services including haircuts, beard trims, facials, keratin treatments, hair colouring, manicure, pedicure and body spa at Madhapur, Hyderabad."</span><span class="tok-brace">,</span>
+    <span class="tok-key">"url"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/men"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"provider"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+      <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"HairSalon"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"STYLAND Family Salon"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"url"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/"</span>
+    <span class="tok-brace">},</span>
+    <span class="tok-key">"areaServed"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+      <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"City"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Hyderabad"</span>
+    <span class="tok-brace">},</span>
+    <span class="tok-key">"breadcrumb"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+      <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"BreadcrumbList"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"itemListElement"</span><span class="tok-brace">:</span> <span class="tok-brace">[</span>
+        <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ListItem"</span><span class="tok-brace">,</span> <span class="tok-key">"position"</span><span class="tok-brace">:</span> <span class="tok-num">1</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Home"</span><span class="tok-brace">,</span> <span class="tok-key">"item"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/"</span> <span class="tok-brace">},</span>
+        <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ListItem"</span><span class="tok-brace">,</span> <span class="tok-key">"position"</span><span class="tok-brace">:</span> <span class="tok-num">2</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Men's Services"</span><span class="tok-brace">,</span> <span class="tok-key">"item"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/men"</span> <span class="tok-brace">}</span>
+      <span class="tok-brace">]</span>
+    <span class="tok-brace">}</span>
+  <span class="tok-brace">},</span>
+  <span class="tok-brace">{</span>
+    <span class="tok-key">"@context"</span><span class="tok-brace">:</span> <span class="tok-str">"https://schema.org"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ItemList"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Men's Grooming Services Price List"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"itemListElement"</span><span class="tok-brace">:</span> <span class="tok-brace">[</span>
+      <span class="tok-brace">{</span>
+        <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ListItem"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"position"</span><span class="tok-brace">:</span> <span class="tok-num">1</span><span class="tok-brace">,</span>
+        <span class="tok-key">"item"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+          <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Product"</span><span class="tok-brace">,</span>
+          <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Regular Basic Haircut"</span><span class="tok-brace">,</span>
+          <span class="tok-key">"offers"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Offer"</span><span class="tok-brace">,</span> <span class="tok-key">"price"</span><span class="tok-brace">:</span> <span class="tok-str">"300"</span><span class="tok-brace">,</span> <span class="tok-key">"priceCurrency"</span><span class="tok-brace">:</span> <span class="tok-str">"INR"</span> <span class="tok-brace">}</span>
+        <span class="tok-brace">}</span>
+      <span class="tok-brace">},</span>
+      <span class="tok-brace">{</span>
+        <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ListItem"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"position"</span><span class="tok-brace">:</span> <span class="tok-num">2</span><span class="tok-brace">,</span>
+        <span class="tok-key">"item"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+          <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Product"</span><span class="tok-brace">,</span>
+          <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Keratin Treatment"</span><span class="tok-brace">,</span>
+          <span class="tok-key">"offers"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Offer"</span><span class="tok-brace">,</span> <span class="tok-key">"price"</span><span class="tok-brace">:</span> <span class="tok-str">"3000"</span><span class="tok-brace">,</span> <span class="tok-key">"priceCurrency"</span><span class="tok-brace">:</span> <span class="tok-str">"INR"</span> <span class="tok-brace">}</span>
+        <span class="tok-brace">}</span>
+      <span class="tok-brace">},</span>
+      <span class="tok-brace">{</span>
+        <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ListItem"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"position"</span><span class="tok-brace">:</span> <span class="tok-num">3</span><span class="tok-brace">,</span>
+        <span class="tok-key">"item"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+          <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Product"</span><span class="tok-brace">,</span>
+          <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Hydra Premium Facial"</span><span class="tok-brace">,</span>
+          <span class="tok-key">"offers"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Offer"</span><span class="tok-brace">,</span> <span class="tok-key">"price"</span><span class="tok-brace">:</span> <span class="tok-str">"4000"</span><span class="tok-brace">,</span> <span class="tok-key">"priceCurrency"</span><span class="tok-brace">:</span> <span class="tok-str">"INR"</span> <span class="tok-brace">}</span>
+        <span class="tok-brace">}</span>
+      <span class="tok-brace">},</span>
+      <span class="tok-brace">{</span>
+        <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ListItem"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"position"</span><span class="tok-brace">:</span> <span class="tok-num">4</span><span class="tok-brace">,</span>
+        <span class="tok-key">"item"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+          <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Product"</span><span class="tok-brace">,</span>
+          <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Beard Trim"</span><span class="tok-brace">,</span>
+          <span class="tok-key">"offers"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Offer"</span><span class="tok-brace">,</span> <span class="tok-key">"price"</span><span class="tok-brace">:</span> <span class="tok-str">"150"</span><span class="tok-brace">,</span> <span class="tok-key">"priceCurrency"</span><span class="tok-brace">:</span> <span class="tok-str">"INR"</span> <span class="tok-brace">}</span>
+        <span class="tok-brace">}</span>
+      <span class="tok-brace">}</span>
+    <span class="tok-brace">]</span>
+  <span class="tok-brace">}</span>
+<span class="tok-brace">]</span>
+<span class="tok-tag">&lt;/script&gt;</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- PAGE 5: WOMEN'S SERVICES -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div class="page-section">
+    <div class="page-header">
+      <div class="page-icon">💅</div>
+      <div class="page-header-text">
+        <h2>Women's Services</h2>
+        <p>https://www.stylandfamilysalon.in/women</p>
+      </div>
+    </div>
+    <div class="page-body">
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Meta Title</span>
+          <span class="char-count good">58 chars ✓</span>
+        </div>
+        <div class="meta-value">Women's Beauty & Hair Services in Madhapur, Hyderabad</div>
+      </div>
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Meta Description</span>
+          <span class="char-count good">157 chars ✓</span>
+        </div>
+        <div class="meta-value">Haircuts, keratin, waxing, hydra facials, Korean facials, threading & more for women at STYLAND Salon, Madhapur. Experienced stylists. Book an appointment today.</div>
+      </div>
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Canonical Tag</span>
+        </div>
+        <div class="meta-value">&lt;link rel="canonical" href="https://www.stylandfamilysalon.in/women" /&gt;</div>
+      </div>
+
+      <div class="section-divider">Schema Markup</div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="lang">JSON-LD · Service + BreadcrumbList (Women)</span>
+          <span class="copy-hint">Add to &lt;head&gt; of /women</span>
+        </div>
+        <div class="code-body"><span class="tok-tag">&lt;script</span> <span class="tok-attr">type</span><span class="tok-brace">=</span><span class="tok-str">"application/ld+json"</span><span class="tok-tag">&gt;</span>
+<span class="tok-brace">{</span>
+  <span class="tok-key">"@context"</span><span class="tok-brace">:</span> <span class="tok-str">"https://schema.org"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Service"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Women's Beauty &amp; Hair Services in Hyderabad"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"description"</span><span class="tok-brace">:</span> <span class="tok-str">"Complete women's beauty services including haircuts, keratin, smoothening, rebounding, waxing, facials (Hydra, Korean, Gold), medi facials, threading, manicure, pedicure, and bridal makeup at STYLAND Family Salon, Madhapur."</span><span class="tok-brace">,</span>
+  <span class="tok-key">"url"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/women"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"provider"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+    <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"HairSalon"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"STYLAND Family Salon"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"telephone"</span><span class="tok-brace">:</span> <span class="tok-str">"+917702397311"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"url"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/"</span>
+  <span class="tok-brace">},</span>
+  <span class="tok-key">"hasOfferCatalog"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+    <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"OfferCatalog"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Women's Services"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"itemListElement"</span><span class="tok-brace">:</span> <span class="tok-brace">[</span>
+      <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Offer"</span><span class="tok-brace">,</span> <span class="tok-key">"itemOffered"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Service"</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Women's Haircut &amp; Hair Wash"</span> <span class="tok-brace">},</span> <span class="tok-key">"price"</span><span class="tok-brace">:</span> <span class="tok-str">"500"</span><span class="tok-brace">,</span> <span class="tok-key">"priceCurrency"</span><span class="tok-brace">:</span> <span class="tok-str">"INR"</span> <span class="tok-brace">},</span>
+      <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Offer"</span><span class="tok-brace">,</span> <span class="tok-key">"itemOffered"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Service"</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Keratin Treatment"</span> <span class="tok-brace">},</span> <span class="tok-key">"price"</span><span class="tok-brace">:</span> <span class="tok-str">"4000"</span><span class="tok-brace">,</span> <span class="tok-key">"priceCurrency"</span><span class="tok-brace">:</span> <span class="tok-str">"INR"</span> <span class="tok-brace">},</span>
+      <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Offer"</span><span class="tok-brace">,</span> <span class="tok-key">"itemOffered"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Service"</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Hydra Facial"</span> <span class="tok-brace">},</span> <span class="tok-key">"price"</span><span class="tok-brace">:</span> <span class="tok-str">"2500"</span><span class="tok-brace">,</span> <span class="tok-key">"priceCurrency"</span><span class="tok-brace">:</span> <span class="tok-str">"INR"</span> <span class="tok-brace">},</span>
+      <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Offer"</span><span class="tok-brace">,</span> <span class="tok-key">"itemOffered"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Service"</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Threading – Full Face"</span> <span class="tok-brace">},</span> <span class="tok-key">"price"</span><span class="tok-brace">:</span> <span class="tok-str">"300"</span><span class="tok-brace">,</span> <span class="tok-key">"priceCurrency"</span><span class="tok-brace">:</span> <span class="tok-str">"INR"</span> <span class="tok-brace">},</span>
+      <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Offer"</span><span class="tok-brace">,</span> <span class="tok-key">"itemOffered"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Service"</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Korean Facial"</span> <span class="tok-brace">},</span> <span class="tok-key">"price"</span><span class="tok-brace">:</span> <span class="tok-str">"3600"</span><span class="tok-brace">,</span> <span class="tok-key">"priceCurrency"</span><span class="tok-brace">:</span> <span class="tok-str">"INR"</span> <span class="tok-brace">}</span>
+    <span class="tok-brace">]</span>
+  <span class="tok-brace">},</span>
+  <span class="tok-key">"breadcrumb"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+    <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"BreadcrumbList"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"itemListElement"</span><span class="tok-brace">:</span> <span class="tok-brace">[</span>
+      <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ListItem"</span><span class="tok-brace">,</span> <span class="tok-key">"position"</span><span class="tok-brace">:</span> <span class="tok-num">1</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Home"</span><span class="tok-brace">,</span> <span class="tok-key">"item"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/"</span> <span class="tok-brace">},</span>
+      <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ListItem"</span><span class="tok-brace">,</span> <span class="tok-key">"position"</span><span class="tok-brace">:</span> <span class="tok-num">2</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Women's Services"</span><span class="tok-brace">,</span> <span class="tok-key">"item"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/women"</span> <span class="tok-brace">}</span>
+    <span class="tok-brace">]</span>
+  <span class="tok-brace">}</span>
+<span class="tok-brace">}</span>
+<span class="tok-tag">&lt;/script&gt;</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- PAGE 6: BRIDAL MAKEUP -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div class="page-section">
+    <div class="page-header">
+      <div class="page-icon">👰</div>
+      <div class="page-header-text">
+        <h2>Bridal Makeup</h2>
+        <p>https://www.stylandfamilysalon.in/bridal-makeup</p>
+      </div>
+    </div>
+    <div class="page-body">
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Meta Title — UPGRADE RECOMMENDED</span>
+          <span class="char-count good">60 chars ✓</span>
+        </div>
+        <div class="meta-value">Bridal Makeup in Hyderabad | HD & Airbrush Packages – STYLAND</div>
+      </div>
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Meta Description — UPGRADE RECOMMENDED</span>
+          <span class="char-count good">159 chars ✓</span>
+        </div>
+        <div class="meta-value">HD, airbrush & traditional bridal makeup in Hyderabad starting ₹14,999. Pre-bridal packages, groom packages & trial sessions. Book your bridal consultation now.</div>
+      </div>
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Canonical Tag</span>
+        </div>
+        <div class="meta-value">&lt;link rel="canonical" href="https://www.stylandfamilysalon.in/bridal-makeup" /&gt;</div>
+      </div>
+
+      <div class="section-divider">Schema Markup</div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="lang">JSON-LD · Service + AggregateRating + Offers (Bridal)</span>
+          <span class="copy-hint">Add to &lt;head&gt; of /bridal-makeup</span>
+        </div>
+        <div class="code-body"><span class="tok-tag">&lt;script</span> <span class="tok-attr">type</span><span class="tok-brace">=</span><span class="tok-str">"application/ld+json"</span><span class="tok-tag">&gt;</span>
+<span class="tok-brace">{</span>
+  <span class="tok-key">"@context"</span><span class="tok-brace">:</span> <span class="tok-str">"https://schema.org"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Service"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Bridal Makeup Services in Hyderabad"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"url"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/bridal-makeup"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"description"</span><span class="tok-brace">:</span> <span class="tok-str">"Professional bridal makeup services in Hyderabad including HD makeup, airbrush makeup, traditional bridal styling, pre-bridal skincare, and groom packages. Serving brides across Hyderabad since 2000."</span><span class="tok-brace">,</span>
+  <span class="tok-key">"provider"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+    <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"BeautySalon"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"STYLAND Family Salon"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"telephone"</span><span class="tok-brace">:</span> <span class="tok-str">"+917702397311"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"url"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"address"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+      <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"PostalAddress"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"streetAddress"</span><span class="tok-brace">:</span> <span class="tok-str">"Doctor's Colony, Madhapur"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"addressLocality"</span><span class="tok-brace">:</span> <span class="tok-str">"Hyderabad"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"addressRegion"</span><span class="tok-brace">:</span> <span class="tok-str">"Telangana"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"postalCode"</span><span class="tok-brace">:</span> <span class="tok-str">"500081"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"addressCountry"</span><span class="tok-brace">:</span> <span class="tok-str">"IN"</span>
+    <span class="tok-brace">}</span>
+  <span class="tok-brace">},</span>
+  <span class="tok-key">"areaServed"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+    <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"City"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Hyderabad"</span>
+  <span class="tok-brace">},</span>
+  <span class="tok-key">"aggregateRating"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+    <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"AggregateRating"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"ratingValue"</span><span class="tok-brace">:</span> <span class="tok-str">"4.8"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"reviewCount"</span><span class="tok-brace">:</span> <span class="tok-str">"3"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"bestRating"</span><span class="tok-brace">:</span> <span class="tok-str">"5"</span>
+  <span class="tok-brace">},</span>
+  <span class="tok-key">"review"</span><span class="tok-brace">:</span> <span class="tok-brace">[</span>
+    <span class="tok-brace">{</span>
+      <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Review"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"author"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Person"</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Neha Sharma"</span> <span class="tok-brace">},</span>
+      <span class="tok-key">"reviewRating"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Rating"</span><span class="tok-brace">,</span> <span class="tok-key">"ratingValue"</span><span class="tok-brace">:</span> <span class="tok-str">"5"</span> <span class="tok-brace">},</span>
+      <span class="tok-key">"reviewBody"</span><span class="tok-brace">:</span> <span class="tok-str">"The makeup looked flawless throughout my wedding day. The team was professional and incredibly supportive. Everyone loved the look."</span>
+    <span class="tok-brace">},</span>
+    <span class="tok-brace">{</span>
+      <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Review"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"author"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Person"</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Priya Reddy"</span> <span class="tok-brace">},</span>
+      <span class="tok-key">"reviewRating"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Rating"</span><span class="tok-brace">,</span> <span class="tok-key">"ratingValue"</span><span class="tok-brace">:</span> <span class="tok-str">"5"</span> <span class="tok-brace">},</span>
+      <span class="tok-key">"reviewBody"</span><span class="tok-brace">:</span> <span class="tok-str">"I loved how they customized the entire look according to my outfit and skin tone. The pre-bridal sessions really helped my skin glow naturally."</span>
+    <span class="tok-brace">}</span>
+  <span class="tok-brace">],</span>
+  <span class="tok-key">"hasOfferCatalog"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+    <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"OfferCatalog"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Bridal Packages"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"itemListElement"</span><span class="tok-brace">:</span> <span class="tok-brace">[</span>
+      <span class="tok-brace">{</span>
+        <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Offer"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Silver Bridal Package"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"price"</span><span class="tok-brace">:</span> <span class="tok-str">"14999"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"priceCurrency"</span><span class="tok-brace">:</span> <span class="tok-str">"INR"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"description"</span><span class="tok-brace">:</span> <span class="tok-str">"Includes bridal makeup, basic hairstyling, saree draping, eyelashes and touch-up."</span>
+      <span class="tok-brace">},</span>
+      <span class="tok-brace">{</span>
+        <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Offer"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Gold Bridal Package"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"price"</span><span class="tok-brace">:</span> <span class="tok-str">"21999"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"priceCurrency"</span><span class="tok-brace">:</span> <span class="tok-str">"INR"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"description"</span><span class="tok-brace">:</span> <span class="tok-str">"HD bridal makeup, premium hairstyling, saree draping, nail styling, trial session and pre-bridal facial."</span>
+      <span class="tok-brace">},</span>
+      <span class="tok-brace">{</span>
+        <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Offer"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Platinum Bridal Package"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"price"</span><span class="tok-brace">:</span> <span class="tok-str">"29999"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"priceCurrency"</span><span class="tok-brace">:</span> <span class="tok-str">"INR"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"description"</span><span class="tok-brace">:</span> <span class="tok-str">"Luxury HD/Airbrush makeup, premium hairstyling, saree draping, bridal nail styling, full touch-up kit, complimentary trial and premium skin preparation."</span>
+      <span class="tok-brace">}</span>
+    <span class="tok-brace">]</span>
+  <span class="tok-brace">},</span>
+  <span class="tok-key">"breadcrumb"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+    <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"BreadcrumbList"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"itemListElement"</span><span class="tok-brace">:</span> <span class="tok-brace">[</span>
+      <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ListItem"</span><span class="tok-brace">,</span> <span class="tok-key">"position"</span><span class="tok-brace">:</span> <span class="tok-num">1</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Home"</span><span class="tok-brace">,</span> <span class="tok-key">"item"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/"</span> <span class="tok-brace">},</span>
+      <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ListItem"</span><span class="tok-brace">,</span> <span class="tok-key">"position"</span><span class="tok-brace">:</span> <span class="tok-num">2</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Bridal Makeup"</span><span class="tok-brace">,</span> <span class="tok-key">"item"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/bridal-makeup"</span> <span class="tok-brace">}</span>
+    <span class="tok-brace">]</span>
+  <span class="tok-brace">}</span>
+<span class="tok-brace">}</span>
+<span class="tok-tag">&lt;/script&gt;</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- PAGE 7: CONTACT -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div class="page-section">
+    <div class="page-header">
+      <div class="page-icon">📞</div>
+      <div class="page-header-text">
+        <h2>Contact</h2>
+        <p>https://www.stylandfamilysalon.in/contact</p>
+      </div>
+    </div>
+    <div class="page-body">
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Meta Title</span>
+          <span class="char-count good">55 chars ✓</span>
+        </div>
+        <div class="meta-value">Contact STYLAND Family Salon | Madhapur, Hyderabad</div>
+      </div>
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Meta Description</span>
+          <span class="char-count good">154 chars ✓</span>
+        </div>
+        <div class="meta-value">Get in touch with STYLAND Family Salon at Doctor's Colony, Madhapur, Hyderabad. Call +91 77023 97311. Open daily 10 AM–9 PM. Find our location on Google Maps.</div>
+      </div>
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Canonical Tag</span>
+        </div>
+        <div class="meta-value">&lt;link rel="canonical" href="https://www.stylandfamilysalon.in/contact" /&gt;</div>
+      </div>
+
+      <div class="section-divider">Schema Markup</div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="lang">JSON-LD · ContactPage + LocalBusiness</span>
+          <span class="copy-hint">Add to &lt;head&gt; of /contact</span>
+        </div>
+        <div class="code-body"><span class="tok-tag">&lt;script</span> <span class="tok-attr">type</span><span class="tok-brace">=</span><span class="tok-str">"application/ld+json"</span><span class="tok-tag">&gt;</span>
+<span class="tok-brace">{</span>
+  <span class="tok-key">"@context"</span><span class="tok-brace">:</span> <span class="tok-str">"https://schema.org"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ContactPage"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Contact STYLAND Family Salon"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"url"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/contact"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"mainEntity"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+    <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"HairSalon"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"STYLAND Family Salon"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"telephone"</span><span class="tok-brace">:</span> <span class="tok-str">"+917702397311"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"url"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"address"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+      <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"PostalAddress"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"streetAddress"</span><span class="tok-brace">:</span> <span class="tok-str">"Doctor's Colony, Madhapur"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"addressLocality"</span><span class="tok-brace">:</span> <span class="tok-str">"Hyderabad"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"addressRegion"</span><span class="tok-brace">:</span> <span class="tok-str">"Telangana"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"postalCode"</span><span class="tok-brace">:</span> <span class="tok-str">"500081"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"addressCountry"</span><span class="tok-brace">:</span> <span class="tok-str">"IN"</span>
+    <span class="tok-brace">},</span>
+    <span class="tok-key">"openingHoursSpecification"</span><span class="tok-brace">:</span> <span class="tok-brace">[</span>
+      <span class="tok-brace">{</span>
+        <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"OpeningHoursSpecification"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"dayOfWeek"</span><span class="tok-brace">:</span> <span class="tok-brace">[</span><span class="tok-str">"Monday"</span><span class="tok-brace">,</span><span class="tok-str">"Tuesday"</span><span class="tok-brace">,</span><span class="tok-str">"Wednesday"</span><span class="tok-brace">,</span><span class="tok-str">"Thursday"</span><span class="tok-brace">,</span><span class="tok-str">"Friday"</span><span class="tok-brace">,</span><span class="tok-str">"Saturday"</span><span class="tok-brace">,</span><span class="tok-str">"Sunday"</span><span class="tok-brace">]</span><span class="tok-brace">,</span>
+        <span class="tok-key">"opens"</span><span class="tok-brace">:</span> <span class="tok-str">"10:00"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"closes"</span><span class="tok-brace">:</span> <span class="tok-str">"21:00"</span>
+      <span class="tok-brace">}</span>
+    <span class="tok-brace">],</span>
+    <span class="tok-key">"contactPoint"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+      <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ContactPoint"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"telephone"</span><span class="tok-brace">:</span> <span class="tok-str">"+917702397311"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"contactType"</span><span class="tok-brace">:</span> <span class="tok-str">"customer service"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"availableLanguage"</span><span class="tok-brace">:</span> <span class="tok-brace">[</span><span class="tok-str">"English"</span><span class="tok-brace">,</span> <span class="tok-str">"Telugu"</span><span class="tok-brace">,</span> <span class="tok-str">"Hindi"</span><span class="tok-brace">]</span><span class="tok-brace">,</span>
+      <span class="tok-key">"hoursAvailable"</span><span class="tok-brace">:</span> <span class="tok-str">"Mo-Su 10:00-21:00"</span>
+    <span class="tok-brace">}</span>
+  <span class="tok-brace">},</span>
+  <span class="tok-key">"breadcrumb"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+    <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"BreadcrumbList"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"itemListElement"</span><span class="tok-brace">:</span> <span class="tok-brace">[</span>
+      <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ListItem"</span><span class="tok-brace">,</span> <span class="tok-key">"position"</span><span class="tok-brace">:</span> <span class="tok-num">1</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Home"</span><span class="tok-brace">,</span> <span class="tok-key">"item"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/"</span> <span class="tok-brace">},</span>
+      <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ListItem"</span><span class="tok-brace">,</span> <span class="tok-key">"position"</span><span class="tok-brace">:</span> <span class="tok-num">2</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Contact"</span><span class="tok-brace">,</span> <span class="tok-key">"item"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/contact"</span> <span class="tok-brace">}</span>
+    <span class="tok-brace">]</span>
+  <span class="tok-brace">}</span>
+<span class="tok-brace">}</span>
+<span class="tok-tag">&lt;/script&gt;</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- PAGE 8: BOOK APPOINTMENT -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div class="page-section">
+    <div class="page-header">
+      <div class="page-icon">📅</div>
+      <div class="page-header-text">
+        <h2>Book Appointment</h2>
+        <p>https://www.stylandfamilysalon.in/book-appointment</p>
+      </div>
+    </div>
+    <div class="page-body">
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Meta Title</span>
+          <span class="char-count good">58 chars ✓</span>
+        </div>
+        <div class="meta-value">Book a Salon Appointment | STYLAND Family Salon Hyderabad</div>
+      </div>
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Meta Description</span>
+          <span class="char-count good">155 chars ✓</span>
+        </div>
+        <div class="meta-value">Book your salon appointment online at STYLAND Family Salon, Madhapur, Hyderabad. Choose haircut, bridal makeup, facial & more. Easy booking, instant confirmation.</div>
+      </div>
+
+      <div class="meta-card">
+        <div class="meta-card-label">
+          <span>Canonical Tag</span>
+        </div>
+        <div class="meta-value">&lt;link rel="canonical" href="https://www.stylandfamilysalon.in/book-appointment" /&gt;</div>
+      </div>
+
+      <div class="section-divider">Schema Markup</div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="lang">JSON-LD · ReservationPage + BreadcrumbList</span>
+          <span class="copy-hint">Add to &lt;head&gt; of /book-appointment</span>
+        </div>
+        <div class="code-body"><span class="tok-tag">&lt;script</span> <span class="tok-attr">type</span><span class="tok-brace">=</span><span class="tok-str">"application/ld+json"</span><span class="tok-tag">&gt;</span>
+<span class="tok-brace">{</span>
+  <span class="tok-key">"@context"</span><span class="tok-brace">:</span> <span class="tok-str">"https://schema.org"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"WebPage"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Book a Salon Appointment – STYLAND Family Salon"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"url"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/book-appointment"</span><span class="tok-brace">,</span>
+  <span class="tok-key">"description"</span><span class="tok-brace">:</span> <span class="tok-str">"Schedule a salon appointment online at STYLAND Family Salon in Madhapur, Hyderabad. Available for haircuts, bridal makeup, keratin, facials, and all grooming services."</span><span class="tok-brace">,</span>
+  <span class="tok-key">"potentialAction"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+    <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ReserveAction"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"target"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+      <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"EntryPoint"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"urlTemplate"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/book-appointment"</span>
+    <span class="tok-brace">},</span>
+    <span class="tok-key">"object"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+      <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"Service"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Salon Service Appointment"</span><span class="tok-brace">,</span>
+      <span class="tok-key">"provider"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+        <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"HairSalon"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"STYLAND Family Salon"</span><span class="tok-brace">,</span>
+        <span class="tok-key">"telephone"</span><span class="tok-brace">:</span> <span class="tok-str">"+917702397311"</span>
+      <span class="tok-brace">}</span>
+    <span class="tok-brace">}</span>
+  <span class="tok-brace">},</span>
+  <span class="tok-key">"breadcrumb"</span><span class="tok-brace">:</span> <span class="tok-brace">{</span>
+    <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"BreadcrumbList"</span><span class="tok-brace">,</span>
+    <span class="tok-key">"itemListElement"</span><span class="tok-brace">:</span> <span class="tok-brace">[</span>
+      <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ListItem"</span><span class="tok-brace">,</span> <span class="tok-key">"position"</span><span class="tok-brace">:</span> <span class="tok-num">1</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Home"</span><span class="tok-brace">,</span> <span class="tok-key">"item"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/"</span> <span class="tok-brace">},</span>
+      <span class="tok-brace">{</span> <span class="tok-key">"@type"</span><span class="tok-brace">:</span> <span class="tok-str">"ListItem"</span><span class="tok-brace">,</span> <span class="tok-key">"position"</span><span class="tok-brace">:</span> <span class="tok-num">2</span><span class="tok-brace">,</span> <span class="tok-key">"name"</span><span class="tok-brace">:</span> <span class="tok-str">"Book Appointment"</span><span class="tok-brace">,</span> <span class="tok-key">"item"</span><span class="tok-brace">:</span> <span class="tok-str">"https://www.stylandfamilysalon.in/book-appointment"</span> <span class="tok-brace">}</span>
+    <span class="tok-brace">]</span>
+  <span class="tok-brace">}</span>
+<span class="tok-brace">}</span>
+<span class="tok-tag">&lt;/script&gt;</span></div>
+      </div>
+
+      <div class="note-box">
+        <strong>💡 Conversion tip:</strong> Add <code>&lt;meta name="robots" content="noindex, follow"&gt;</code> only if your booking page is a form-only page with no unique SEO content. If it has content, keep it indexable (default).
+      </div>
+    </div>
+  </div>
+
+  <!-- Implementation Notes -->
+  <div class="impl-note">
+    <h3>✅ Implementation Checklist (Next.js)</h3>
+    <ol>
+      <li>Since you're on Next.js, add each page's <code>&lt;title&gt;</code>, <code>&lt;meta name="description"&gt;</code>, and <code>&lt;link rel="canonical"&gt;</code> inside the <strong>next/head</strong> component of that page file (or use <code>metadata</code> export if on App Router).</li>
+      <li>Add the <code>&lt;script type="application/ld+json"&gt;</code> blocks inside <strong>next/head</strong> or <strong>next/script</strong> with <code>strategy="beforeInteractive"</code> for schema markup.</li>
+      <li><strong>Fix /men and /women immediately</strong> — they currently serve the homepage title/description. This is the highest-priority fix.</li>
+      <li>Ensure <strong>www redirect</strong> is configured — all non-www traffic (stylandfamilysalon.in) should 301-redirect to www.stylandfamilysalon.in to avoid canonicalization issues.</li>
+      <li>Submit your sitemap to <strong>Google Search Console</strong> at: <code>https://www.stylandfamilysalon.in/sitemap.xml</code></li>
+      <li>Validate all schema using <strong>Google's Rich Results Test</strong>: <code>search.google.com/test/rich-results</code></li>
+      <li>Update <code>aggregateRating.reviewCount</code> on the homepage schema whenever your Google review count significantly changes.</li>
+      <li>Add <strong>Open Graph tags</strong> (<code>og:title</code>, <code>og:description</code>, <code>og:image</code>) alongside each page's meta tags for better social sharing previews.</li>
+    </ol>
+  </div>
+
+</div>
+
+<div class="footer">
+  STYLAND Family Salon SEO Package · stylandfamilysalon.in · Built by Claude for Nithin Guggilla
+</div>
+
+</body>
+</html>

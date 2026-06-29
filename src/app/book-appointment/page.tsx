@@ -134,14 +134,14 @@ export default function BookAppointmentPage() {
           className="relative z-10 flex w-full max-w-4xl flex-col h-auto lg:h-[90vh] max-h-[900px] rounded-[2rem] border border-white/5 bg-[#121212] shadow-2xl overflow-y-auto custom-scrollbar"
         >
           {/* Top Section inside Right Panel */}
-          <div className="flex shrink-0 flex-col items-center border-b border-white/5 p-6 text-center sm:p-8">
-            <h2 className="text-2xl font-bold tracking-tight !text-white sm:text-3xl">
+          {/* <div className="flex shrink-0 flex-col items-center border-b border-white/5 p-6 text-center sm:p-8">
+            <h2 className="text-xl font-bold tracking-tight !text-white sm:text-2xl">
               Booking Details
             </h2>
             <p className="mt-2 text-sm text-white/60 sm:text-base">
               Fill in your details and pick your preferred time to secure your session.
             </p>
-          </div>
+          </div> */}
 
           {/* Form Container */}
           <form onSubmit={handleSubmit} className="flex-1 w-full p-6 sm:p-8">
